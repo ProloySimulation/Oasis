@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="join_edit_text">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColorHint">@color/white</item>
+<!--        <item name="android:background">@drawable/bg_round_border</item>-->
+        <item name="android:paddingTop">@dimen/dimSpace1</item>
+        <item name="android:paddingBottom">@dimen/dimSpace1</item>
+        <item name="android:paddingLeft">@dimen/dimen120px</item>
+        <item name="android:paddingRight">@dimen/dimSpace1</item>
+        <item name="android:layout_marginTop">@dimen/dimSpace1</item>
+        <item name="android:textSize">@dimen/dimTextParagraph</item>
+        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:fontFamily">@font/fontspring_demo_biennale_regular</item>-->
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+    <style name="join_edit_text_label">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Business Name</item>
+<!--        <item name="android:fontFamily">@font/fontspring_demo_biennale_regular</item>-->
+        <item name="android:layout_marginLeft">@dimen/dimSpace1</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/dimTextParagraph</item>
+    </style>
+
+    <!--  Common Styles  -->
+    <style name="common_text_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+<!--        <item name="android:fontFamily">@font/helveticaneue</item>-->
+        <item name="android:textSize">14.7sp</item>
+    </style>
+    <style name="common_linear_layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+    <!--<style name="common_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/fontspring_demo_biennale_medium</item>
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="background">@drawable/bg_round_border</item>
+        <item name="android:backgroundTint">@color/secondary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+
+    </style>-->
+
+  <!--  <style name="drawer_item">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/fontspring_demo_biennale_regular</item>
+        <item name="android:textColor">@color/text_dark_gray</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="background">@drawable/border_bottom_drawer</item>
+        <item name="android:textSize">@dimen/dimTextHeading</item>
+    </style>-->
+
+    <style name="heading">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:fontFamily">@font/helveticaneue</item>-->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/dimTextHeading</item>
+    </style>
+
+    <style name="subHeading">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:fontFamily">@font/helveticaneue</item>-->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/dimTextSubHeading</item>
+    </style>
+
+    <style name="paragraph">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:fontFamily">@font/arial_regular</item>-->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/dimTextParagraph</item>
+    </style>
+
+    <style name="smallText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+<!--        <item name="android:fontFamily">@font/arial_regular</item>-->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/dimTxtSmall</item>
+    </style>
+</resources>

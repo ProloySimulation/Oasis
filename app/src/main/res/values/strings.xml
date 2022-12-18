@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Oasis</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="stores">Stores</string>
+    <string name="profile">Profile</string>
+    <string name="task">Task</string>
+    <string name="sign_out">SignOut</string>
+    <string name="completed_task">Completed Task</string>
+    <string name="pending_task">Pending Task</string>
+    <string name="all_assgined_stores">All Assgined Stores</string>
+    <string name="all_completed_tasks">All Completed Tasks</string>
+    <string name="task_name">Task Name</string>
+    <string name="date">Date</string>
+    <string name="ref_img">Ref img</string>
+    <string name="capture_image">Capture Image</string>
+    <string name="view">View</string>
+    <string name="check_list">Check List</string>
+    <string name="stock_fill">Stock Fill</string>
+    <string name="sort_order">Sort Order</string>
+    <string name="price_display">Price Display</string>
+    <string name="offer_display">Offer Display</string>
+    <string name="all_pending_task">All Pending Task</string>
+    <string name="update">Update</string>
+    <string name="all_assigned_stores">All Assigned Stores</string>
+    <string name="store_name">Store Name</string>
+    <string name="co_ordinates">Co-ordinates</string>
+    <string name="country">Country</string>
+    <string name="region">Region</string>
+</resources>

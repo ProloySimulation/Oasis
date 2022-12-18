@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/dashBoardFragment">
+
+    <fragment
+        android:id="@+id/dashBoardFragment"
+        android:name="com.amtech.oasis.ui.mainscreen.fragment.DashBoardFragment"
+        android:label="fragment_dash_board"
+        tools:layout="@layout/fragment_dash_board" >
+        <action
+            android:id="@+id/action_dashBoardFragment_to_completedFragment"
+            app:destination="@id/completedFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_pendingTaskFragment"
+            app:destination="@id/pendingTaskFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_allAssignedFragment"
+            app:destination="@id/allAssignedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/completedFragment"
+        android:name="com.amtech.oasis.ui.mainscreen.fragment.CompletedFragment"
+        android:label="fragment_completed"
+        tools:layout="@layout/fragment_completed" />
+    <fragment
+        android:id="@+id/pendingTaskFragment"
+        android:name="com.amtech.oasis.ui.mainscreen.fragment.PendingTaskFragment"
+        android:label="fragment_pending_task"
+        tools:layout="@layout/fragment_pending_task" />
+    <fragment
+        android:id="@+id/allAssignedFragment"
+        android:name="com.amtech.oasis.ui.mainscreen.fragment.AllAssignedFragment"
+        android:label="fragment_all_assigned"
+        tools:layout="@layout/fragment_all_assigned" />
+</navigation>
