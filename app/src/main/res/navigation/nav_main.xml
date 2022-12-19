@@ -24,15 +24,42 @@
         android:id="@+id/completedFragment"
         android:name="com.amtech.oasis.ui.mainscreen.fragment.CompletedFragment"
         android:label="fragment_completed"
-        tools:layout="@layout/fragment_completed" />
+        tools:layout="@layout/fragment_completed" >
+        <action
+            android:id="@+id/action_completedFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pendingTaskFragment"
         android:name="com.amtech.oasis.ui.mainscreen.fragment.PendingTaskFragment"
         android:label="fragment_pending_task"
-        tools:layout="@layout/fragment_pending_task" />
+        tools:layout="@layout/fragment_pending_task" >
+        <action
+            android:id="@+id/action_pendingTaskFragment_to_pendingDetailFragment"
+            app:destination="@id/pendingDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/allAssignedFragment"
         android:name="com.amtech.oasis.ui.mainscreen.fragment.AllAssignedFragment"
         android:label="fragment_all_assigned"
-        tools:layout="@layout/fragment_all_assigned" />
+        tools:layout="@layout/fragment_all_assigned" >
+        <action
+            android:id="@+id/action_allAssignedFragment_to_assignedDetailFragment"
+            app:destination="@id/assignedDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.amtech.oasis.ui.detailscreen.fragment.CompletedDetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/pendingDetailFragment"
+        android:name="com.amtech.oasis.ui.detailscreen.fragment.PendingDetailFragment"
+        android:label="fragment_pending_detail"
+        tools:layout="@layout/fragment_pending_detail" />
+    <fragment
+        android:id="@+id/assignedDetailFragment"
+        android:name="com.amtech.oasis.ui.detailscreen.fragment.AssignedDetailFragment"
+        android:label="fragment_assigned_detail"
+        tools:layout="@layout/fragment_assigned_detail" />
 </navigation>

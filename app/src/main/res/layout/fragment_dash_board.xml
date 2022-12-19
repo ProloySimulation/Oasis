@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/dashboard_bgm"
-    tools:context=".ui.mainscreen.fragment.DashBoardFragment"
     android:id="@+id/drawerLayout">
-
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:itemIconPadding="20dp"
-        app:menu="@menu/drawer_menu"
-        android:id="@+id/navigationDrawer"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -33,7 +24,7 @@
                 android:layout_height="?attr/actionBarSize">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/edit_profile_back_image_view"
+                    android:id="@+id/imvDrawer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -47,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@+id/edit_profile_back_image_view"
+                    android:layout_toEndOf="@+id/imvDrawer"
                     android:paddingTop="2.5dp"
                     android:text="Dashboard"
                     android:textColor="@color/white" />
@@ -77,9 +68,9 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="@dimen/dimen70px">
+            android:layout_margin="@dimen/dimen105px">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -116,7 +107,7 @@
                             android:orientation="vertical">
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/subHeading"
+                                style="@style/heading"
                                 android:layout_gravity="end"
                                 android:layout_marginStart="@dimen/dimSpace1"
                                 android:layout_toEndOf="@+id/imgViewNearByIcon"
@@ -124,7 +115,7 @@
                                 android:textColor="@color/black" />
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/subHeading"
+                                style="@style/heading"
                                 android:layout_gravity="end"
                                 android:layout_marginStart="@dimen/dimSpace1"
                                 android:layout_toEndOf="@+id/imgViewNearByIcon"
@@ -180,7 +171,7 @@
                             android:orientation="vertical">
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/subHeading"
+                                style="@style/heading"
                                 android:layout_gravity="end"
                                 android:layout_marginStart="@dimen/dimSpace1"
                                 android:layout_toEndOf="@+id/imgViewNearByIcon"
@@ -188,7 +179,7 @@
                                 android:textColor="@color/black" />
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/subHeading"
+                                style="@style/heading"
                                 android:layout_gravity="end"
                                 android:layout_marginStart="@dimen/dimSpace1"
                                 android:layout_toEndOf="@+id/imgViewNearByIcon"
@@ -244,7 +235,7 @@
                             android:orientation="vertical">
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/subHeading"
+                                style="@style/heading"
                                 android:layout_gravity="end"
                                 android:layout_marginStart="@dimen/dimSpace1"
                                 android:layout_toEndOf="@+id/imgViewNearByIcon"
@@ -252,7 +243,7 @@
                                 android:textColor="@color/black" />
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                style="@style/subHeading"
+                                style="@style/heading"
                                 android:layout_gravity="end"
                                 android:layout_marginStart="@dimen/dimSpace1"
                                 android:layout_toEndOf="@+id/imgViewNearByIcon"
@@ -275,5 +266,13 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <!--<com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:itemIconPadding="20dp"
+        app:menu="@menu/drawer_menu"
+        android:id="@+id/navigationDrawer"/>-->
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

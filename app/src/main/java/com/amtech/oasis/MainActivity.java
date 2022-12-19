@@ -9,8 +9,6 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    private NavController navController;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +18,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void viewInit() {
-        navController = Navigation.findNavController(this, R.id.fragmentContainerView);
     }
 }

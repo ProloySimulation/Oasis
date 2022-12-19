@@ -2,7 +2,9 @@ package com.amtech.oasis.ui.mainscreen.fragment;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +16,14 @@ import android.view.ViewGroup;
 import com.amtech.oasis.R;
 import com.amtech.oasis.ui.mainscreen.adapter.CompletedTaskAdapter;
 
+import java.util.Objects;
+
 
 public class CompletedFragment extends Fragment {
 
     private RecyclerView recyclerCompleted;
     private CompletedTaskAdapter adapter;
+    private AppCompatImageView imvBack;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,17 +34,39 @@ public class CompletedFragment extends Fragment {
         init(view);
         setRecycler();
 
+        imvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).popBackStack();
+            }
+        });
         return view;
     }
 
     private void init(View view) {
         recyclerCompleted = view.findViewById(R.id.recyclerCompletedTask);
+        imvBack = view.findViewById(R.id.imvBackCompletedTasks);
     }
 
     private void setRecycler()
     {
-        adapter = new CompletedTaskAdapter(getActivity());
-        recyclerCompleted.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        adapter = new CompletedTaskAdapter(getActivity(),"completed", new CompletedTaskAdapter.ClickListener() {
+            @Override
+            public void itemClickCompleted(int position) {
+                Navigation.findNavController(requireView()).navigate(R.id.action_completedFragment_to_detailFragment);
+            }
+
+            @Override
+            public void itemClickPending(int position) {
+
+            }
+
+            @Override
+            public void itemClickAllAssign(int position) {
+
+            }
+        });
+        recyclerCompleted.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerCompleted.setItemAnimator(new DefaultItemAnimator());
         recyclerCompleted.setAdapter(adapter);
         adapter.notifyDataSetChanged();

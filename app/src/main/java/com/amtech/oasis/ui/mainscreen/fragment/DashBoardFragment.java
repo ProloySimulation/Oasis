@@ -7,9 +7,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.amtech.oasis.R;
 import com.google.android.material.navigation.NavigationView;
@@ -20,6 +22,7 @@ public class DashBoardFragment extends Fragment implements View.OnClickListener 
     private CardView cardCompleted,cardPending,cardAllAssigned;
     private DrawerLayout drawerLayout ;
     private NavigationView navigationView;
+    private ImageView imvDrawer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,7 +31,7 @@ public class DashBoardFragment extends Fragment implements View.OnClickListener 
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
 
         init(view);
-        navigationView.bringToFront();
+//        navigationView.bringToFront();
 
         return view;
     }
@@ -37,15 +40,38 @@ public class DashBoardFragment extends Fragment implements View.OnClickListener 
         cardCompleted = view.findViewById(R.id.cardCompleted);
         cardPending = view.findViewById(R.id.cardPending);
         cardAllAssigned = view.findViewById(R.id.cardAllAssigned);
-        drawerLayout = view.findViewById(R.id.drawerLayout);
-        navigationView = view.findViewById(R.id.navigationDrawer);
+//        drawerLayout = view.findViewById(R.id.drawerLayout);
+//        navigationView = view.findViewById(R.id.navigationDrawer);
+//        imvDrawer = view.findViewById(R.id.imvDrawer);
+
+        cardCompleted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_dashBoardFragment_to_completedFragment);
+            }
+        });
+
+        cardPending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_dashBoardFragment_to_pendingTaskFragment);
+            }
+        });
+
+        cardAllAssigned.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_dashBoardFragment_to_allAssignedFragment);
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
-        if(view == cardCompleted)
+
+        if(view == imvDrawer)
         {
-            Navigation.findNavController(view).navigate(R.id.action_dashBoardFragment_to_completedFragment);
+            drawerLayout.openDrawer(Gravity.LEFT);
         }
     }
 }

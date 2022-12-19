@@ -18,7 +18,7 @@
             android:layout_height="?attr/actionBarSize">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/edit_profile_back_image_view"
+                android:id="@+id/imvBackCompletedTasks"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/edit_profile_back_image_view"
+                android:layout_toEndOf="@+id/imvBackCompletedTasks"
                 android:paddingTop="2.5dp"
                 android:text="@string/task"
                 android:textColor="@color/white" />
@@ -84,68 +84,83 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.LinearLayoutCompat
+                <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="6"
                     android:background="@color/colorPrimary"
                     android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="@dimen/dimen35px"
-                        android:gravity="center"
-                        style="@style/paragraph"
-                        android:text="@string/task_name"/>
+                    <TableRow>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="@dimen/dimen35px"
-                        style="@style/paragraph"
-                        android:gravity="center"
-                        android:text="@string/date"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dimen35px"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            style="@style/paragraph"
+                            android:text="@string/task_name"/>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        style="@style/paragraph"
-                        android:padding="@dimen/dimen35px"
-                        android:gravity="center"
-                        android:text="@string/check_list"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/dimen35px"
+                            style="@style/paragraph"
+                            android:gravity="center"
+                            android:text="@string/date"/>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        style="@style/paragraph"
-                        android:padding="@dimen/dimen35px"
-                        android:gravity="center"
-                        android:text="@string/ref_img"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:layout_gravity="center"
+                            style="@style/paragraph"
+                            android:padding="@dimen/dimen35px"
+                            android:gravity="center"
+                            android:text="@string/check_list"/>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        style="@style/paragraph"
-                        android:gravity="center"
-                        android:padding="@dimen/dimen35px"
-                        android:text="@string/capture_image"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_column="1"
+                            android:layout_gravity="center"
+                            style="@style/paragraph"
+                            android:padding="@dimen/dimen35px"
+                            android:gravity="center"
+                            android:text="@string/ref_img"/>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        style="@style/paragraph"
-                        android:padding="@dimen/dimen35px"
-                        android:text="@string/view"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:layout_weight="1"
+                            style="@style/paragraph"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:padding="@dimen/dimen35px"
+                            android:text="@string/capture_image"/>
 
-                </androidx.appcompat.widget.LinearLayoutCompat>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_column="1"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            style="@style/paragraph"
+                            android:padding="@dimen/dimen35px"
+                            android:text="@string/view"/>
+
+                    </TableRow>
+
+                </TableLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"

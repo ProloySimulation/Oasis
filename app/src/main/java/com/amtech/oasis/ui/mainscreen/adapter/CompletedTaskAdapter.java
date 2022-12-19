@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TableLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,9 +19,13 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
 
     private Context context;
     private List<Tasks> arrayList;
+    private ClickListener clickListener;
+    private String taskType;
 
-    public CompletedTaskAdapter(Context context) {
+    public CompletedTaskAdapter(Context context,String taskType,ClickListener clickListener) {
         this.context = context;
+        this.clickListener = clickListener;
+        this.taskType = taskType;
 //        this.arrayList = arrayList;
     }
 
@@ -37,6 +42,42 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
 
     @Override
     public void onBindViewHolder(@NonNull CompletedTaskAdapter.ViewHolder holder, int position) {
+
+        if(taskType.equals("completed"))
+        {
+            holder.tableCompleted.setVisibility(View.VISIBLE);
+        }
+
+        if(taskType.equals("pending"))
+        {
+            holder.tablePending.setVisibility(View.VISIBLE);
+        }
+
+        if(taskType.equals("assigned"))
+        {
+            holder.tableAllAssigned.setVisibility(View.VISIBLE);
+        }
+
+        holder.imvCompletedView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.itemClickCompleted(position);
+            }
+        });
+
+        holder.imvPendingView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.itemClickPending(position);
+            }
+        });
+
+        holder.imvAssignedView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.itemClickAllAssign(position);
+            }
+        });
 //        Picasso.with(context).load(this.arrayList.get(position).getBannerImage()).into(holder.item_home_horizontal_recycler_view_2_image_view);
     }
 
@@ -47,11 +88,26 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView item_home_horizontal_recycler_view_2_image_view;
+        ImageView imvCompletedView,imvPendingView,imvAssignedView;
+        TableLayout tableCompleted,tablePending,tableAllAssigned;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            imvCompletedView = itemView.findViewById(R.id.imvViewCompletedTask);
+            imvPendingView = itemView.findViewById(R.id.imvPendingView);
+            imvAssignedView = itemView.findViewById(R.id.imvViewAllAssigned);
+
+            tableCompleted = itemView.findViewById(R.id.tableCompleted);
+            tablePending = itemView.findViewById(R.id.tablePending);
+            tableAllAssigned = itemView.findViewById(R.id.tableAllAssigned);
         }
+    }
+
+    public interface ClickListener
+    {
+        void itemClickCompleted(int position);
+        void itemClickPending(int position);
+        void itemClickAllAssign(int position);
     }
 }
