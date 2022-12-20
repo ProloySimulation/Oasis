@@ -3,7 +3,7 @@
     <group
         android:id="@+id/android1">
     <item
-        android:id="@+id/dn_home"
+        android:id="@+id/dn_dashboard"
         android:title="@string/dashboard"
         android:icon="@drawable/ic_dashboard"
         />
@@ -11,14 +11,14 @@
     <group
         android:id="@+id/android2">
         <item
-            android:id="@+id/dn_my_orders"
+            android:id="@+id/dn_stores"
             android:title="@string/stores"
             android:icon="@drawable/ic_store"/>
     </group>
     <group
         android:id="@+id/android3">
     <item
-        android:id="@+id/dn_my_places"
+        android:id="@+id/dn_task"
         android:title="@string/task"
         android:icon="@drawable/ic_task"
         />
@@ -26,7 +26,7 @@
     <group
         android:id="@+id/android4">
     <item
-        android:id="@+id/dn_my_favorites"
+        android:id="@+id/dn_profile"
         android:title="@string/profile"
         android:icon="@drawable/ic_profile"/>
     </group>
@@ -54,7 +54,7 @@
     <group
         android:id="@+id/android8">
     <item
-        android:id="@+id/settingsFragment"
+        android:id="@+id/dn_signout"
         android:title="@string/sign_out"
         android:icon="@drawable/ic_signout"/>
     </group>
