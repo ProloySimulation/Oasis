@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_dashBoardFragment_to_allAssignedFragment"
             app:destination="@id/allAssignedFragment" />
+        <action
+            android:id="@+id/action_dashBoardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/completedFragment"
@@ -62,4 +65,9 @@
         android:name="com.amtech.oasis.ui.detailscreen.fragment.AssignedDetailFragment"
         android:label="fragment_assigned_detail"
         tools:layout="@layout/fragment_assigned_detail" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.amtech.oasis.ui.mainscreen.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

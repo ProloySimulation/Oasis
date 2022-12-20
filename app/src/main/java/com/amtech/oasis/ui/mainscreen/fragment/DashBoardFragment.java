@@ -94,12 +94,16 @@ public class DashBoardFragment extends Fragment{
                         Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_allAssignedFragment);
                         break;
 
-                    case R.id.dn_task:
-
+                    case R.id.dn_pending:
+                        Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_pendingTaskFragment);
                         break;
 
-                    case R.id.dn_signout:
+                    case R.id.dn_complete:
+                        Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_completedFragment);
+                        break;
 
+                    case R.id.dn_profile:
+                        Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_profileFragment);
                         break;
 
                 }

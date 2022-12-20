@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group
         android:id="@+id/android1">
     <item
@@ -15,14 +16,27 @@
             android:title="@string/stores"
             android:icon="@drawable/ic_store"/>
     </group>
-    <group
-        android:id="@+id/android3">
+
     <item
         android:id="@+id/dn_task"
         android:title="@string/task"
-        android:icon="@drawable/ic_task"
-        />
-    </group>
+        android:icon="@drawable/ic_task">
+
+        <menu>
+            <item
+                android:id="@+id/dn_pending"
+                android:checkable="true"
+                android:title="@string/pending_task"
+                android:icon="@drawable/ic_pending"/>
+
+            <item
+                android:id="@+id/dn_complete"
+                android:checkable="true"
+                android:title="@string/completed_task"
+                android:icon="@drawable/ic_completed"/>
+
+        </menu>
+    </item>
     <group
         android:id="@+id/android4">
     <item

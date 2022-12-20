@@ -48,4 +48,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="assigned_marchantine_names">Assigned Marchantine Names</string>
+    <string name="save">Save</string>
+    <string name="change_password">Change Password</string>
 </resources>
