@@ -11,4 +11,5 @@
     <color name="oceanBlue">#009fe3</color>
     <color name="offWhite">#ebecec</color>
     <color name="pink">#d74793</color>
+    <color name="login_edittext_bg">#d9f2ff</color>
 </resources>

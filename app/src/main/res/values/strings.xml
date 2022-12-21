@@ -53,4 +53,12 @@
     <string name="assigned_marchantine_names">Assigned Marchantine Names</string>
     <string name="save">Save</string>
     <string name="change_password">Change Password</string>
+    <string name="reset_your_password">Reset Your Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="done">Done</string>
+    <string name="email_id">Email Id</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="forgot_password">Forgot Password</string>
 </resources>

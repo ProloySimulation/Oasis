@@ -1,5 +1,6 @@
 package com.amtech.oasis.ui.mainscreen.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.amtech.oasis.R;
+import com.amtech.oasis.ui.mainscreen.activity.ActivityResetPassword;
 
 
 public class ProfileFragment extends Fragment {
@@ -37,7 +39,8 @@ public class ProfileFragment extends Fragment {
         tvChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), ActivityResetPassword.class);
+                startActivity(intent);
             }
         });
 

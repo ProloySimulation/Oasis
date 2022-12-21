@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.amtech.oasis.R;
+import com.amtech.oasis.ui.mainscreen.activity.ActivityLogin;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
@@ -104,6 +105,12 @@ public class DashBoardFragment extends Fragment{
 
                     case R.id.dn_profile:
                         Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_profileFragment);
+                        break;
+
+                    case R.id.dn_signout:
+                        Intent intentSignIn = new Intent(getActivity(), ActivityLogin.class);
+                        intentSignIn.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intentSignIn);
                         break;
 
                 }
