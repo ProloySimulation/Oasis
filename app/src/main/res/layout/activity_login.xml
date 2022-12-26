@@ -8,120 +8,138 @@
     android:fillViewport="true"
     tools:context=".ui.mainscreen.activity.ActivityLogin">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/dimen53px"
-            android:layout_marginTop="@dimen/dimen53px"
-            android:layout_marginEnd="@dimen/dimen53px"
-            android:layout_marginBottom="@dimen/dimen53px"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dimen140px"
-                android:src="@drawable/login_icon" />
+            android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen105px"
-                android:background="@drawable/bg_round_border"
-                android:backgroundTint="@color/login_edittext_bg"
-                android:orientation="horizontal"
-                android:padding="@dimen/dimen35px">
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/dimen53px"
+                android:layout_marginTop="@dimen/dimen53px"
+                android:layout_marginEnd="@dimen/dimen53px"
+                android:layout_marginBottom="@dimen/dimen53px"
+                android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_email" />
+                    android:layout_marginTop="@dimen/dimen140px"
+                    android:src="@drawable/login_icon" />
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/dimen53px"
-                    android:background="@color/oceanBlue" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    style="@style/subHeading"
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen53px"
-                    android:background="@null"
-                    android:hint="@string/email_id"
-                    android:imeOptions="actionNext"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColorHint="@color/colorPrimary" />
+                    android:layout_marginTop="@dimen/dimen105px"
+                    android:background="@drawable/bg_round_border"
+                    android:backgroundTint="@color/login_edittext_bg"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dimen35px">
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_email" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen70px"
-                android:background="@drawable/bg_round_border"
-                android:backgroundTint="@color/login_edittext_bg"
-                android:orientation="horizontal"
-                android:padding="@dimen/dimen35px">
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/dimen53px"
+                        android:background="@color/oceanBlue" />
 
-                <androidx.appcompat.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etLoginEmail"
+                        style="@style/subHeading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen53px"
+                        android:background="@null"
+                        android:hint="@string/email_id"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/colorPrimary" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen70px"
+                    android:background="@drawable/bg_round_border"
+                    android:backgroundTint="@color/login_edittext_bg"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dimen35px">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_password" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/dimen53px"
+                        android:background="@color/oceanBlue" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etLoginPassword"
+                        style="@style/subHeading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dimen53px"
+                        android:background="@null"
+                        android:hint="@string/password"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/colorPrimary"
+                        android:textColorHint="@color/colorPrimary" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLoginSignIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen105px"
+                    android:background="@drawable/bg_round_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/sign_in"
+                    android:textColor="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLoginForgotPassword"
+                    style="@style/heading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_password" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/dimen53px"
-                    android:background="@color/oceanBlue" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    style="@style/subHeading"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/dimen53px"
-                    android:background="@null"
-                    android:hint="@string/password"
-                    android:imeOptions="actionDone"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    android:textColorHint="@color/colorPrimary" />
+                    android:layout_margin="@dimen/dimen53px"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/colorPrimary" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+        </RelativeLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnLoginSignIn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen105px"
-                android:background="@drawable/bg_round_border"
-                android:backgroundTint="@color/colorPrimary"
-                android:text="@string/sign_in"
-                android:textColor="@color/white" />
+        <ProgressBar
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/progressBarLogin"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvLoginForgotPassword"
-                style="@style/heading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen53px"
-                android:text="@string/forgot_password"
-                android:textColor="@color/colorPrimary" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </RelativeLayout>
+    </FrameLayout>
 
 </ScrollView>
