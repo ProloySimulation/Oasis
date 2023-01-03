@@ -14,8 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.amtech.oasis.R;
+import com.amtech.oasis.model.AssignStorArr;
+import com.amtech.oasis.model.AssignStore;
+import com.amtech.oasis.model.Stores;
+import com.amtech.oasis.model.Tasks;
 import com.amtech.oasis.ui.mainscreen.adapter.CompletedTaskAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -50,7 +56,9 @@ public class CompletedFragment extends Fragment {
 
     private void setRecycler()
     {
-        adapter = new CompletedTaskAdapter(getActivity(),"completed", new CompletedTaskAdapter.ClickListener() {
+        List<Stores> assignStores = new ArrayList<>();
+        List<AssignStorArr> pendingTask = new ArrayList<>();
+        adapter = new CompletedTaskAdapter(getActivity(),"completed",assignStores,pendingTask, new CompletedTaskAdapter.ClickListener() {
             @Override
             public void itemClickCompleted(int position) {
                 Navigation.findNavController(requireView()).navigate(R.id.action_completedFragment_to_detailFragment);

@@ -136,6 +136,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/dimen35px"
                 android:gravity="center"
+                android:id="@+id/tvAssignStoreName"
                 android:layout_gravity="center"
                 android:maxLines="1"
                 android:textColor="@color/colorPrimary"
@@ -158,6 +159,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/tvAssignedStoreCountry"
                 android:padding="@dimen/dimen35px"
                 android:gravity="center"
                 android:layout_gravity="center"
@@ -171,6 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/dimen35px"
+                android:id="@+id/tvAssignedStoreRegion"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:maxLines="1"
@@ -204,6 +207,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/tvPendingTaksName"
                 android:layout_weight="1"
                 android:padding="@dimen/dimen35px"
                 android:gravity="center"
@@ -216,6 +220,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/tvPendingTaskDate"
                 android:layout_weight="1"
                 android:padding="@dimen/dimen35px"
                 android:gravity="center"
@@ -229,11 +234,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:id="@+id/layoutPendingChecklist"
                 android:padding="@dimen/dimen35px"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <!--<androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
@@ -263,17 +269,17 @@
                     android:maxLines="1"
                     android:textColor="@color/colorPrimary"
                     style="@style/paragraph"
-                    android:text="@string/offer_display"/>
+                    android:text="@string/offer_display"/>-->
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <androidx.appcompat.widget.AppCompatImageView
+            <!--<androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@drawable/demo_ref_image"
                 android:layout_weight="1"
-                android:padding="@dimen/dimen35px"/>
+                android:padding="@dimen/dimen35px"/>-->
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="0dp"

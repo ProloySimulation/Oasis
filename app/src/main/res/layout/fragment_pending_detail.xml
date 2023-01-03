@@ -108,6 +108,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/tvPendingTaskDetailName"
                             style="@style/paragraph"
                             android:textColor="@color/colorPrimary"
                             android:layout_margin="@dimen/dimen53px"
@@ -148,6 +149,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/tvPendingTaskDetailDate"
                             style="@style/paragraph"
                             android:textColor="@color/colorPrimary"
                             android:layout_margin="@dimen/dimen53px"
@@ -179,6 +181,11 @@
                         android:layout_margin="@dimen/dimen53px"
                         android:text="@string/check_list"/>
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recyclerPendingCheckList"/>
+
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -186,7 +193,7 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <androidx.appcompat.widget.LinearLayoutCompat
+                       <!-- <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
@@ -355,7 +362,7 @@
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
-                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.appcompat.widget.LinearLayoutCompat>-->
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -366,6 +373,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen18px"
+                android:visibility="gone"
                 app:cardBackgroundColor="@color/offWhite">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
