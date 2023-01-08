@@ -2,11 +2,13 @@ package com.amtech.oasis.ui.mainscreen.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -61,11 +63,30 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
         if(taskType.equals("pending"))
         {
             holder.tablePending.setVisibility(View.VISIBLE);
+            holder.tvPendingTaskName.setText(this.pendingTasksArrayList.get(position).getTaskName());
+            holder.tvPendingTaskDate.setText(this.pendingTasksArrayList.get(position).getTaskDate());
+
+            for(int j =0;j<this.pendingTasksArrayList.get(position).getCheckLists().size();j++)
+            {
+                AppCompatTextView txtName = new AppCompatTextView(context);
+//                txtName.setId("28");
+                txtName.setEllipsize(TextUtils.TruncateAt.END);
+                txtName.setMaxLines(2);
+                txtName.setTextSize(12);
+                txtName.setText(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getCheckListName());
+                holder.layoutCheckList.addView(txtName);
+            }
         }
 
         if(taskType.equals("assigned"))
         {
             holder.tableAllAssigned.setVisibility(View.VISIBLE);
+            for(int i =0;i<arrayList.size();i++)
+            {
+                holder.tvAssignStoreName.setText(arrayList.get(i).getStoreName());
+                holder.tvAssignedCountry.setText(arrayList.get(i).getCountry());
+                holder.tvAssignedRegion.setText(arrayList.get(i).getRegion());
+            }
         }
 
         holder.imvCompletedView.setOnClickListener(new View.OnClickListener() {
@@ -88,29 +109,6 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
                 clickListener.itemClickAllAssign(position);
             }
         });
-
-        for(int i =0;i<arrayList.size();i++)
-        {
-            holder.tvAssignStoreName.setText(arrayList.get(i).getStoreName());
-            holder.tvAssignedCountry.setText(arrayList.get(i).getCountry());
-            holder.tvAssignedRegion.setText(arrayList.get(i).getRegion());
-        }
-
-        for (int i =0;i<this.pendingTasksArrayList.size();i++)
-        {
-            holder.tvPendingTaskName.setText(this.pendingTasksArrayList.get(i).getTaskName());
-            holder.tvPendingTaskDate.setText(this.pendingTasksArrayList.get(i).getTaskDate());
-
-            for(int j =0;j<this.pendingTasksArrayList.get(i).getCheckLists().size();j++)
-            {
-                AppCompatTextView txtName = new AppCompatTextView(context);
-//                txtName.setId("28");
-                txtName.setText(this.pendingTasksArrayList.get(i).getCheckLists().get(j).getCheckListName());
-                holder.layoutCheckList.addView(txtName);
-            }
-        }
-
-//        Picasso.with(context).load(this.arrayList.get(position).getBannerImage()).into(holder.item_home_horizontal_recycler_view_2_image_view);
     }
 
     @Override

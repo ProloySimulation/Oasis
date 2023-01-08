@@ -198,6 +198,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/offWhite"
+        android:layout_marginBottom="@dimen/dimen53px"
         android:visibility="gone"
         android:id="@+id/tablePending"
         android:orientation="horizontal">

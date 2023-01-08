@@ -102,7 +102,7 @@ public class PendingTaskFragment extends Fragment {
     private void setRecycler(List<AssignStorArr> arrayList)
     {
         List<Stores> assignStores = new ArrayList<>();
-
+//        Toast.makeText(getActivity(), arrayList.get(0).getTaskName(), Toast.LENGTH_SHORT).show();;
         adapter = new CompletedTaskAdapter(getActivity(),"pending",assignStores,arrayList, new CompletedTaskAdapter.ClickListener() {
             @Override
             public void itemClickCompleted(int position) {

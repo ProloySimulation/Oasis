@@ -2,41 +2,52 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:id="@+id/checkListParentLayout"
     android:orientation="horizontal">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         style="@style/paragraph"
         android:id="@+id/tvPendingCheckList"
         android:textColor="@color/colorPrimary"
         android:text="@string/stock_fill"/>
 
-    <RadioButton
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:scaleX="0.5"
-        android:scaleY="0.5"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/paragraph"
-        android:textColor="@color/colorPrimary"
-        android:text="@string/yes"/>
+        android:id="@+id/layoutSelection">
 
-    <RadioButton
-        android:layout_width="25dp"
-        android:layout_height="wrap_content"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:checked="false"/>
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroupCheckList"
+            android:orientation="horizontal">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/paragraph"
-        android:textColor="@color/colorPrimary"
-        android:text="No"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonPositive"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimen70px"
+                android:text="@string/yes"
+                android:scaleX="0.5"
+                android:scaleY="0.5"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonNegative"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimen70px"
+                android:text="@string/no"
+                android:scaleX="0.5"
+                android:scaleY="0.5" />
+
+        </RadioGroup>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

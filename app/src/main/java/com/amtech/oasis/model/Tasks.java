@@ -9,6 +9,12 @@ public class Tasks {
     private String date;
     @SerializedName("id")
     private String taskId;
+    @SerializedName("message")
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
 
     public String getTaskName() {
         return taskName;
