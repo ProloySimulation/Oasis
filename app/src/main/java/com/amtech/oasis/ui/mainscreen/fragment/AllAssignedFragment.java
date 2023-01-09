@@ -119,7 +119,9 @@ public class AllAssignedFragment extends Fragment {
 
             @Override
             public void itemClickAllAssign(int position) {
-                Navigation.findNavController(requireView()).navigate(R.id.action_allAssignedFragment_to_assignedDetailFragment);
+                Bundle bundle = new Bundle();
+                bundle.putString("STOREID",assignStores.get(position).getStoreId());
+                Navigation.findNavController(requireView()).navigate(R.id.action_allAssignedFragment_to_assignedDetailFragment,bundle);
 
             }
         });

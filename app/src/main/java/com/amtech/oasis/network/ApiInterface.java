@@ -1,12 +1,15 @@
 package com.amtech.oasis.network;
 
+import com.amtech.oasis.model.AssignStorArr;
 import com.amtech.oasis.model.DashboardObject;
 import com.amtech.oasis.model.Login;
 import com.amtech.oasis.model.Password;
 import com.amtech.oasis.model.ProfileObject;
 import com.amtech.oasis.model.StoreDataObj;
+import com.amtech.oasis.model.Stores;
 import com.amtech.oasis.model.Tasks;
 
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -55,4 +58,10 @@ public interface ApiInterface {
 
     @POST("merchandiser/changePassword")
     Call<Password> passwordChange(@HeaderMap Map<String,String> headers,@Body Password password);
+
+    @GET("merchandiser/view-store/{id}")
+    Call<StoreDataObj> getStoreInfo(@HeaderMap Map<String,String> headers, @Path("id")String storeId);
+
+    @POST("merchandiser/update-profile")
+    Call<StoreDataObj> profileUpdate(@HeaderMap Map<String,String> headers, @Path("id")String storeId);
 }

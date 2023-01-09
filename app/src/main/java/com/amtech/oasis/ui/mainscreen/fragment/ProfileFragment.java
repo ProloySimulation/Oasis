@@ -75,6 +75,9 @@ public class ProfileFragment extends Fragment {
         etAssignedName = view.findViewById(R.id.etAssignedName);
 
         token = SharedPreferenceManager.getInstance(getActivity()).GetUserToken();
+
+        etEmail.setEnabled(false);
+        etAssignedName.setEnabled(false);
     }
 
     private void getProfile()

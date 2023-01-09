@@ -62,4 +62,6 @@
     <string name="sign_in">Sign In</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="old_password">Old Password</string>
+    <string name="click_to_upload_image"><u>Click To Upload Image</u></string>
+    <string name="end_date">End Date</string>
 </resources>

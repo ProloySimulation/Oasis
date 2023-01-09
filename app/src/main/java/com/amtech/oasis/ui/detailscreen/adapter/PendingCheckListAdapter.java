@@ -54,6 +54,7 @@ public class PendingCheckListAdapter extends RecyclerView.Adapter<PendingCheckLi
         if(this.arrayList.get(position).getImageCheck().equals("1"))
         {
             holder.layoutSelection.setVisibility(View.GONE);
+            holder.tvUploadImage.setVisibility(View.VISIBLE);
         }
 
         if(this.arrayList.get(position).getCheckStatus().equals("1"))
@@ -62,6 +63,14 @@ public class PendingCheckListAdapter extends RecyclerView.Adapter<PendingCheckLi
         }
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.itemClick(position);
+                holder.tvCheckName.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+            }
+        });
+
+        holder.tvUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickListener.itemClick(position);
@@ -94,13 +103,14 @@ public class PendingCheckListAdapter extends RecyclerView.Adapter<PendingCheckLi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        AppCompatTextView tvCheckName;
+        AppCompatTextView tvCheckName,tvUploadImage;
         LinearLayoutCompat parentLayout,layoutSelection;
         RadioGroup rbCheckList;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvCheckName = itemView.findViewById(R.id.tvPendingCheckList);
+            tvUploadImage = itemView.findViewById(R.id.tvUploadImageCheck);
             parentLayout = itemView.findViewById(R.id.checkListParentLayout);
             layoutSelection = itemView.findViewById(R.id.layoutSelection);
             rbCheckList = itemView.findViewById(R.id.radioGroupCheckList);

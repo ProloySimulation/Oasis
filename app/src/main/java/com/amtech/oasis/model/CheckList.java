@@ -11,6 +11,12 @@ public class CheckList {
     private String imageCheck;
     @SerializedName("status")
     private String checkStatus;
+    @SerializedName("image")
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
 
     public String getCheckId() {
         return checkId;

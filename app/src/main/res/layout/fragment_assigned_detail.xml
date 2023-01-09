@@ -102,7 +102,7 @@
                             style="@style/paragraph"
                             android:textColor="@color/pink"
                             android:layout_margin="@dimen/dimen53px"
-                            android:text="@string/task_name"/>
+                            android:text="@string/task"/>
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
                             style="@style/paragraph"
                             android:textColor="@color/colorPrimary"
                             android:layout_margin="@dimen/dimen53px"
-                            android:text="300 ml Display"/>
+                            android:text="3"/>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -148,6 +148,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/paragraph"
+                            android:id="@+id/tvAssignStoreDetailName"
                             android:textColor="@color/colorPrimary"
                             android:layout_margin="@dimen/dimen53px"
                             android:text="Lorem Ipsum"/>
@@ -188,8 +189,23 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/paragraph"
+                            android:id="@+id/tvAssignStoreDetailLat"
                             android:textColor="@color/colorPrimary"
-                            android:layout_margin="@dimen/dimen53px"
+                            android:text="Ipsum"/>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/paragraph"
+                            android:textColor="@color/colorPrimary"
+                            android:text=","/>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/paragraph"
+                            android:id="@+id/tvAssignStoreDetailLong"
+                            android:textColor="@color/colorPrimary"
                             android:text="Ipsum"/>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -228,6 +244,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/paragraph"
+                            android:id="@+id/tvAssignStoreDetailCountry"
                             android:textColor="@color/colorPrimary"
                             android:layout_margin="@dimen/dimen53px"
                             android:text="Oman"/>
@@ -268,6 +285,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/paragraph"
+                            android:id="@+id/tvAssignStoreDetailRegion"
                             android:textColor="@color/colorPrimary"
                             android:layout_margin="@dimen/dimen53px"
                             android:text="North"/>
@@ -277,7 +295,7 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
+            <!--<androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen18px"
@@ -314,7 +332,7 @@
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>-->
 
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"

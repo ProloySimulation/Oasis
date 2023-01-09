@@ -108,6 +108,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/tvCompletedDetailTaskName"
                             style="@style/paragraph"
                             android:textColor="@color/colorPrimary"
                             android:layout_margin="@dimen/dimen53px"
@@ -148,6 +149,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/tvCompletedDetailTaskDate"
                             style="@style/paragraph"
                             android:textColor="@color/colorPrimary"
                             android:layout_margin="@dimen/dimen53px"
@@ -183,189 +185,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:id="@+id/layoutCompletedDetailCheckList"
                         android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <androidx.appcompat.widget.LinearLayoutCompat
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="@string/stock_fill"/>
-
-                                <RadioButton
-                                    android:layout_width="25dp"
-                                    android:layout_height="wrap_content"
-                                    android:scaleX="0.5"
-                                    android:scaleY="0.5"
-                                    android:checked="true"/>
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="@string/yes"/>
-
-                                <RadioButton
-                                    android:layout_width="25dp"
-                                    android:layout_height="wrap_content"
-                                    android:scaleX="0.5"
-                                    android:scaleY="0.5"
-                                    android:checked="false"/>
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="No"/>
-
-                            </androidx.appcompat.widget.LinearLayoutCompat>
-
-                            <androidx.appcompat.widget.LinearLayoutCompat
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="@string/sort_order"/>
-
-                                <RadioButton
-                                    android:layout_width="25dp"
-                                    android:layout_height="wrap_content"
-                                    android:scaleX="0.5"
-                                    android:scaleY="0.5"
-                                    android:checked="true"/>
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="@string/yes"/>
-
-                                <RadioButton
-                                    android:layout_width="25dp"
-                                    android:layout_height="wrap_content"
-                                    android:scaleX="0.5"
-                                    android:scaleY="0.5"
-                                    android:checked="false"/>
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="No"/>
-
-                            </androidx.appcompat.widget.LinearLayoutCompat>
-
-                            <androidx.appcompat.widget.LinearLayoutCompat
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="@string/price_display"/>
-
-                                <RadioButton
-                                    android:layout_width="25dp"
-                                    android:layout_height="wrap_content"
-                                    android:scaleX="0.5"
-                                    android:scaleY="0.5"
-                                    android:checked="true"/>
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="@string/yes"/>
-
-                                <RadioButton
-                                    android:layout_width="25dp"
-                                    android:layout_height="wrap_content"
-                                    android:scaleX="0.5"
-                                    android:scaleY="0.5"
-                                    android:checked="false"/>
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="No"/>
-
-                            </androidx.appcompat.widget.LinearLayoutCompat>
-
-                            <androidx.appcompat.widget.LinearLayoutCompat
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="@string/offer_display"/>
-
-                                <RadioButton
-                                    android:layout_width="25dp"
-                                    android:layout_height="wrap_content"
-                                    android:scaleX="0.5"
-                                    android:scaleY="0.5"
-                                    android:checked="true"/>
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="@string/yes"/>
-
-                                <RadioButton
-                                    android:layout_width="25dp"
-                                    android:layout_height="wrap_content"
-                                    android:scaleX="0.5"
-                                    android:scaleY="0.5"
-                                    android:checked="false"/>
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/paragraph"
-                                    android:textColor="@color/colorPrimary"
-                                    android:text="No"/>
-
-                            </androidx.appcompat.widget.LinearLayoutCompat>
-
-                        </androidx.appcompat.widget.LinearLayoutCompat>
+                        android:orientation="vertical">
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.cardview.widget.CardView>
 
+<!--
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -404,6 +233,7 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.cardview.widget.CardView>
+-->
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -421,6 +251,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:id="@+id/layoutCaptureImage"
                         android:gravity="center"
                         android:orientation="horizontal">
 
@@ -428,16 +259,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/paragraph"
-                            android:textColor="@color/oceanBlue"
                             android:layout_margin="@dimen/dimen53px"
+                            android:textColor="@color/oceanBlue"
                             android:text="@string/capture_image"/>
 
-                        <androidx.appcompat.widget.AppCompatImageView
+                        <!--<androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/imvCompletedDetailCapture"
                             android:src="@drawable/demo_ref_image"
                             android:layout_margin="@dimen/dimen53px"
-                            android:text="300 ml Display"/>
+                            android:text="300 ml Display"/>-->
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -13,6 +13,12 @@ public class Stores {
     private String region;
     @SerializedName("country")
     private String country;
+    @SerializedName("id")
+    private String storeId;
+
+    public String getStoreId() {
+        return storeId;
+    }
 
     public String getRegion() {
         return region;

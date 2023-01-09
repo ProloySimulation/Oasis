@@ -49,5 +49,16 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_marginStart="@dimen/dimen53px"
+        android:textColor="@color/oceanBlue"
+        android:id="@+id/tvUploadImageCheck"
+        android:textSize="@dimen/dimen28px"
+        android:text="@string/click_to_upload_image"/>
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -190,6 +190,7 @@ public class PendingDetailFragment extends Fragment {
                     progressBar.setVisibility(View.GONE);
                     Tasks storeDataObj = response.body();
                     Toast.makeText(getActivity(), storeDataObj.getMessage(), Toast.LENGTH_SHORT).show();
+                    imvCapture.setImageResource(R.drawable.ic_camera);
                 }
 
                 else {

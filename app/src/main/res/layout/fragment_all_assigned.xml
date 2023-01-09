@@ -95,6 +95,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:padding="@dimen/dimen35px"
                             android:gravity="center"
                             style="@style/paragraph"
@@ -105,6 +107,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="@dimen/dimen35px"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             style="@style/paragraph"
                             android:gravity="center"
                             android:text="@string/store_name"/>
@@ -115,13 +119,28 @@
                             android:layout_weight="1"
                             style="@style/paragraph"
                             android:padding="@dimen/dimen35px"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:gravity="center"
-                            android:text="@string/co_ordinates"/>
+                            android:text="Latitude"/>
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            style="@style/paragraph"
+                            android:padding="@dimen/dimen35px"
+                            android:gravity="center"
+                            android:text="Longitude"/>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             style="@style/paragraph"
                             android:padding="@dimen/dimen35px"
                             android:gravity="center"
@@ -131,6 +150,8 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             style="@style/paragraph"
                             android:gravity="center"
                             android:padding="@dimen/dimen35px"

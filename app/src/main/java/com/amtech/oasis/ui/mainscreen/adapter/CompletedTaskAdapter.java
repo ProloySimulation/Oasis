@@ -57,36 +57,56 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
 
         if(taskType.equals("completed"))
         {
-            holder.tableCompleted.setVisibility(View.VISIBLE);
+            if(this.pendingTasksArrayList.get(position).getTaskStatus().equals("Completed"))
+            {
+                holder.tableCompleted.setVisibility(View.VISIBLE);
+
+                holder.tvCompletedTaskNam.setText(this.pendingTasksArrayList.get(position).getTaskName());
+                holder.tvCompletedStartDate.setText(this.pendingTasksArrayList.get(position).getTaskDate());
+                holder.tvCompletedEndDate.setText(this.pendingTasksArrayList.get(position).getTaskEndDate());
+
+                for(int j =0;j<this.pendingTasksArrayList.get(position).getCheckLists().size();j++)
+                {
+                    AppCompatTextView txtName = new AppCompatTextView(context);
+//                txtName.setId("28");
+                    txtName.setEllipsize(TextUtils.TruncateAt.END);
+                    txtName.setMaxLines(2);
+                    txtName.setTextSize(12);
+                    txtName.setText(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getCheckListName());
+                    holder.layoutCompletedCheckList.addView(txtName);
+                }
+            }
         }
 
         if(taskType.equals("pending"))
         {
-            holder.tablePending.setVisibility(View.VISIBLE);
-            holder.tvPendingTaskName.setText(this.pendingTasksArrayList.get(position).getTaskName());
-            holder.tvPendingTaskDate.setText(this.pendingTasksArrayList.get(position).getTaskDate());
-
-            for(int j =0;j<this.pendingTasksArrayList.get(position).getCheckLists().size();j++)
+            if(this.pendingTasksArrayList.get(position).getTaskStatus().equals("Pending"))
             {
-                AppCompatTextView txtName = new AppCompatTextView(context);
+                holder.tablePending.setVisibility(View.VISIBLE);
+                holder.tvPendingTaskName.setText(this.pendingTasksArrayList.get(position).getTaskName());
+                holder.tvPendingTaskDate.setText(this.pendingTasksArrayList.get(position).getTaskDate());
+
+                for(int j =0;j<this.pendingTasksArrayList.get(position).getCheckLists().size();j++)
+                {
+                    AppCompatTextView txtName = new AppCompatTextView(context);
 //                txtName.setId("28");
-                txtName.setEllipsize(TextUtils.TruncateAt.END);
-                txtName.setMaxLines(2);
-                txtName.setTextSize(12);
-                txtName.setText(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getCheckListName());
-                holder.layoutCheckList.addView(txtName);
+                    txtName.setEllipsize(TextUtils.TruncateAt.END);
+                    txtName.setMaxLines(2);
+                    txtName.setTextSize(12);
+                    txtName.setText(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getCheckListName());
+                    holder.layoutCheckList.addView(txtName);
+                }
             }
         }
 
         if(taskType.equals("assigned"))
         {
             holder.tableAllAssigned.setVisibility(View.VISIBLE);
-            for(int i =0;i<arrayList.size();i++)
-            {
-                holder.tvAssignStoreName.setText(arrayList.get(i).getStoreName());
-                holder.tvAssignedCountry.setText(arrayList.get(i).getCountry());
-                holder.tvAssignedRegion.setText(arrayList.get(i).getRegion());
-            }
+            holder.tvAssignStoreName.setText(arrayList.get(position).getStoreName());
+            holder.tvAssignedCountry.setText(arrayList.get(position).getCountry());
+            holder.tvAssignedRegion.setText(arrayList.get(position).getRegion());
+            holder.tvAssignLat.setText(arrayList.get(position).getStoreLat());
+            holder.tvAssignLong.setText(arrayList.get(position).getStoreLong());
         }
 
         holder.imvCompletedView.setOnClickListener(new View.OnClickListener() {
@@ -121,15 +141,21 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
         {
             return pendingTasksArrayList.size();
         }
+
+        else if(taskType.equals("completed"))
+        {
+            return pendingTasksArrayList.size();
+        }
         return 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imvCompletedView,imvPendingView,imvAssignedView;
-        AppCompatTextView tvAssignStoreName,tvPendingTaskName,tvPendingTaskDate,tvAssignedCountry,tvAssignedRegion;
+        AppCompatTextView tvAssignStoreName,tvPendingTaskName,tvPendingTaskDate,tvAssignedCountry,tvAssignedRegion
+                ,tvAssignLat,tvAssignLong,tvCompletedTaskNam,tvCompletedStartDate,tvCompletedEndDate;
         TableLayout tableCompleted,tablePending,tableAllAssigned;
-        LinearLayoutCompat layoutCheckList;
+        LinearLayoutCompat layoutCheckList,layoutCompletedCheckList;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -141,10 +167,17 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
             tvAssignStoreName = itemView.findViewById(R.id.tvAssignStoreName);
 
             tableCompleted = itemView.findViewById(R.id.tableCompleted);
+            tvCompletedTaskNam = itemView.findViewById(R.id.tvCompletedTaskName);
+            tvCompletedStartDate = itemView.findViewById(R.id.tvCompletedStartDate);
+            tvCompletedEndDate = itemView.findViewById(R.id.tvCompletedEndDate);
+            layoutCompletedCheckList = itemView.findViewById(R.id.tvCompletedCheckLayout);
+
             tablePending = itemView.findViewById(R.id.tablePending);
             tableAllAssigned = itemView.findViewById(R.id.tableAllAssigned);
             tvAssignedCountry = itemView.findViewById(R.id.tvAssignedStoreCountry);
             tvAssignedRegion = itemView.findViewById(R.id.tvAssignedStoreRegion);
+            tvAssignLat = itemView.findViewById(R.id.tvAllAssignedLat);
+            tvAssignLong = itemView.findViewById(R.id.tvAllAssignedLong);
 
             tvPendingTaskName = itemView.findViewById(R.id.tvPendingTaksName);
             tvPendingTaskDate = itemView.findViewById(R.id.tvPendingTaskDate);

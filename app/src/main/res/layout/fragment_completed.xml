@@ -128,24 +128,13 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_column="1"
-                            android:layout_gravity="center"
-                            style="@style/paragraph"
-                            android:padding="@dimen/dimen35px"
-                            android:gravity="center"
-                            android:text="@string/ref_img"/>
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             android:layout_column="1"
                             android:layout_weight="1"
                             style="@style/paragraph"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:padding="@dimen/dimen35px"
-                            android:text="@string/capture_image"/>
+                            android:text="@string/end_date"/>
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="0dp"
