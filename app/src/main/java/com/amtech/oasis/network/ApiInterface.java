@@ -4,6 +4,7 @@ import com.amtech.oasis.model.AssignStorArr;
 import com.amtech.oasis.model.DashboardObject;
 import com.amtech.oasis.model.Login;
 import com.amtech.oasis.model.Password;
+import com.amtech.oasis.model.Profile;
 import com.amtech.oasis.model.ProfileObject;
 import com.amtech.oasis.model.StoreDataObj;
 import com.amtech.oasis.model.Stores;
@@ -63,5 +64,12 @@ public interface ApiInterface {
     Call<StoreDataObj> getStoreInfo(@HeaderMap Map<String,String> headers, @Path("id")String storeId);
 
     @POST("merchandiser/update-profile")
-    Call<StoreDataObj> profileUpdate(@HeaderMap Map<String,String> headers, @Path("id")String storeId);
+    Call<Profile> profileUpdate(@HeaderMap Map<String,String> headers, @Body Profile profile);
+
+    @Multipart
+    @POST("merchandiser/update-profile")
+    Call<Profile> profileUpdateImage(@HeaderMap Map<String,String> headers,
+                                     @Part("user_id") RequestBody userId,
+                                     @Part("name") RequestBody userName,
+                                     @Part("profile_image") RequestBody profileImage);
 }

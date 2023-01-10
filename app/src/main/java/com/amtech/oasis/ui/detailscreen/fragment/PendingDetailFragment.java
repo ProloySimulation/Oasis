@@ -171,8 +171,6 @@ public class PendingDetailFragment extends Fragment {
     private void taskUpdateData()
     {
         progressBar.setVisibility(View.VISIBLE);
-        /*RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part parts = MultipartBody.Part.createFormData("image", file.getName(), requestBody);*/
         RequestBody checkIdNumber = RequestBody.create(MediaType.parse("text/plain"), checkId);
         RequestBody pendingTaskId = RequestBody.create(MediaType.parse("text/plain"), taskId);
         RequestBody checkAnswer = RequestBody.create(MediaType.parse("text/plain"), checkIdAnswer);

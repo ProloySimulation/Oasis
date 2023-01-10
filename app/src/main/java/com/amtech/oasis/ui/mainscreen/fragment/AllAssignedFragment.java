@@ -124,6 +124,11 @@ public class AllAssignedFragment extends Fragment {
                 Navigation.findNavController(requireView()).navigate(R.id.action_allAssignedFragment_to_assignedDetailFragment,bundle);
 
             }
+
+            @Override
+            public void showDialog(String imageUrl) {
+
+            }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());

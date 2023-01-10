@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amtech.oasis.R;
@@ -21,6 +24,8 @@ import com.amtech.oasis.model.AssignStore;
 import com.amtech.oasis.model.StoreDataObj;
 import com.amtech.oasis.model.Stores;
 import com.amtech.oasis.model.Tasks;
+import com.amtech.oasis.ui.detailscreen.dialog.CompletedDialog;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +70,7 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
                 holder.tvCompletedStartDate.setText(this.pendingTasksArrayList.get(position).getTaskDate());
                 holder.tvCompletedEndDate.setText(this.pendingTasksArrayList.get(position).getTaskEndDate());
 
-                for(int j =0;j<this.pendingTasksArrayList.get(position).getCheckLists().size();j++)
+                /*for(int j =0;j<this.pendingTasksArrayList.get(position).getCheckLists().size();j++)
                 {
                     AppCompatTextView txtName = new AppCompatTextView(context);
 //                txtName.setId("28");
@@ -74,6 +79,71 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
                     txtName.setTextSize(12);
                     txtName.setText(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getCheckListName());
                     holder.layoutCompletedCheckList.addView(txtName);
+                }*/
+
+                for(int j =0;j<this.pendingTasksArrayList.get(position).getCheckLists().size();j++)
+                {
+                    LinearLayout parent = new LinearLayout(context);
+                    parent.setLayoutParams(new LinearLayout.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, LinearLayoutCompat.LayoutParams.WRAP_CONTENT));
+                    parent.setOrientation(LinearLayout.HORIZONTAL);
+
+                    AppCompatTextView txtName = new AppCompatTextView(context);
+                    txtName.setEllipsize(TextUtils.TruncateAt.END);
+                    txtName.setMaxLines(2);
+                    txtName.setTextSize(10);
+                    txtName.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+                    txtName.setText(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getCheckListName());
+
+                    holder.layoutCompletedCheckList.addView(txtName);
+                    holder.layoutCompletedCheckList.addView(parent);
+
+                    if(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getImageCheck().equals("0"))
+                    {
+                        AppCompatTextView txtYes = new AppCompatTextView(context);
+                        txtYes.setTextSize(8);
+                        txtYes.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+                        AppCompatTextView txtNo = new AppCompatTextView(context);
+                        txtNo.setTextSize(8);
+                        txtNo.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+                        AppCompatImageView imvYes = new AppCompatImageView(context);
+                        AppCompatImageView imvNo = new AppCompatImageView(context);
+
+                        txtYes.setText("Yes");
+                        txtNo.setText("No");
+                        imvYes.setImageResource(R.drawable.icon_yes);
+                        imvNo.setImageResource(R.drawable.icon_no);
+
+                        if(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getImage().equals("yes"))
+                        {
+                            parent.addView(imvYes);
+                            parent.addView(txtYes);
+                            parent.addView(imvNo);
+                            parent.addView(txtNo);
+                        }
+                        else
+                        {
+                            parent.addView(imvNo);
+                            parent.addView(txtYes);
+                            parent.addView(imvYes);
+                            parent.addView(txtNo);
+                        }
+                    }
+                    else
+                    {
+                        AppCompatTextView txtImage = new AppCompatTextView(context);
+                        txtImage.setEllipsize(TextUtils.TruncateAt.END);
+                        txtImage.setMaxLines(1);
+                        txtImage.setTextSize(8);
+                        txtImage.setTextColor(ContextCompat.getColor(context, R.color.oceanBlue));
+                        txtImage.setText(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getImage());
+                        txtImage.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                clickListener.showDialog(txtImage.getText().toString());
+                            }
+                        });
+                        holder.layoutCompletedCheckList.addView(txtImage);
+                    }
                 }
             }
         }
@@ -191,5 +261,6 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
         void itemClickCompleted(int position);
         void itemClickPending(int position);
         void itemClickAllAssign(int position);
+        void showDialog(String imageUrl);
     }
 }

@@ -119,6 +119,11 @@ public class PendingTaskFragment extends Fragment {
             public void itemClickAllAssign(int position) {
 
             }
+
+            @Override
+            public void showDialog(String imageUrl) {
+
+            }
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

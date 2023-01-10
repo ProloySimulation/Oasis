@@ -1,208 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/splash_background"
     tools:context=".ui.mainscreen.fragment.ProfileFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimary">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imvBackProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dimShortSpace3"
-                android:src="@drawable/ic_back_arrow"
-                android:tint="@color/white" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/imvBackProfile"
-                android:paddingTop="2.5dp"
-                android:text="@string/profile"
-                android:textColor="@color/white" />
-
-            <!-- <androidx.appcompat.widget.AppCompatImageView
-                 android:id="@+id/edit_profile_icon"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:src="@drawable/profile"
-                 android:tint="@color/white"
-                 android:layout_alignParentEnd="true"
-                 android:layout_centerVertical="true"
-                 android:layout_marginRight="@dimen/dimen80px"/>
-
-             <androidx.appcompat.widget.AppCompatTextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_centerVertical="true"
-                 android:layout_marginRight="@dimen/dimShortSpace3"
-                 android:layout_toLeftOf="@+id/edit_profile_icon"
-                 android:fontFamily="@font/fontspring_demo_biennale_regular"
-                 android:text="Ahnaf"
-                 android:textColor="@color/white" />-->
-
-        </RelativeLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen70px">
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen240px"
-            android:background="@color/pink"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileHeaderProfilePicture"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:src="@drawable/img_avatar"
-            android:background="@drawable/bg_round_border"
-            android:backgroundTint="#D5D5D5" />
-
-    </FrameLayout>
-
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/dimen110px">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <!-- Input Group -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimary">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imvBackProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimShortSpace3"
+                    android:src="@drawable/ic_back_arrow"
+                    android:tint="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/imvBackProfile"
+                    android:paddingTop="2.5dp"
+                    android:text="@string/profile"
+                    android:textColor="@color/white" />
+
+                <!-- <androidx.appcompat.widget.AppCompatImageView
+                     android:id="@+id/edit_profile_icon"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/profile"
+                     android:tint="@color/white"
+                     android:layout_alignParentEnd="true"
+                     android:layout_centerVertical="true"
+                     android:layout_marginRight="@dimen/dimen80px"/>
+
+                 <androidx.appcompat.widget.AppCompatTextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerVertical="true"
+                     android:layout_marginRight="@dimen/dimShortSpace3"
+                     android:layout_toLeftOf="@+id/edit_profile_icon"
+                     android:fontFamily="@font/fontspring_demo_biennale_regular"
+                     android:text="Ahnaf"
+                     android:textColor="@color/white" />-->
+
+            </RelativeLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen70px">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen240px"
+                android:background="@color/pink"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileHeaderProfilePicture"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/img_avatar"
+                android:background="@drawable/bg_round_border"
+                android:backgroundTint="#D5D5D5" />
+
+        </FrameLayout>
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/edit_profile_input_group_bg"
-            android:layout_marginHorizontal="@dimen/dimen50px"
-            android:paddingHorizontal="@dimen/dimen105px"
-            android:paddingVertical="@dimen/dimen20px">
+            android:layout_marginTop="@dimen/dimen110px">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
+            <!-- Input Group -->
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_height="wrap_content"
-                android:text="@string/username"
-                android:textColor="#BDBDBD"
-                android:textSize="12sp"/>
-
-            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/edit_profile_input_group_bg"
+                android:layout_marginHorizontal="@dimen/dimen50px"
+                android:paddingHorizontal="@dimen/dimen105px"
+                android:paddingVertical="@dimen/dimen20px">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textColor="#BDBDBD"
+                    android:textSize="12sp"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvProfileName"
+                    android:textSize="15sp"
+                    android:singleLine="true"
+                    android:textAlignment="viewStart"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:textColor="#494949"
+                    android:padding="5dp"
+                    android:backgroundTint="@color/white"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!-- Input Group -->
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_height="wrap_content"
-                android:id="@+id/tvProfileName"
-                android:textSize="15sp"
-                android:singleLine="true"
-                android:textAlignment="viewStart"
-                android:textDirection="rtl"
-                android:maxLines="1"
-                android:imeOptions="actionDone"
-                android:textColor="#494949"
-                android:padding="5dp"
-                android:backgroundTint="@color/white"/>
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/edit_profile_input_group_bg"
+                android:layout_marginHorizontal="@dimen/dimen50px"
+                android:layout_marginTop="@dimen/dimen70px"
+                android:paddingHorizontal="@dimen/dimen105px"
+                android:paddingVertical="@dimen/dimen20px">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textColor="#BDBDBD"
+                    android:textSize="12sp"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:singleLine="true"
+                    android:textAlignment="viewStart"
+                    android:textDirection="rtl"
+                    android:id="@+id/etProfileUserEmail"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:textColor="#494949"
+                    android:padding="5dp"
+                    android:backgroundTint="@color/white"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!-- Input Group -->
+            <!--<androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/edit_profile_input_group_bg"
+                android:layout_marginHorizontal="@dimen/dimen50px"
+                android:layout_marginTop="@dimen/dimen70px"
+                android:paddingHorizontal="@dimen/dimen105px"
+                android:paddingVertical="@dimen/dimen20px">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/assigned_marchantine_names"
+                    android:textColor="#BDBDBD"
+                    android:textSize="12sp"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etAssignedName"
+                    android:textSize="15sp"
+                    android:textAlignment="viewStart"
+                    android:textDirection="rtl"
+                    android:textColor="#494949"
+                    android:padding="5dp"
+                    android:backgroundTint="@color/white"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+            <!-- Input Group -->
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <!-- Input Group -->
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_height="wrap_content"
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/edit_profile_input_group_bg"
-            android:layout_marginHorizontal="@dimen/dimen50px"
-            android:layout_marginTop="@dimen/dimen70px"
-            android:paddingHorizontal="@dimen/dimen105px"
-            android:paddingVertical="@dimen/dimen20px">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/email"
-                android:textColor="#BDBDBD"
-                android:textSize="12sp"/>
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:singleLine="true"
-                android:textAlignment="viewStart"
-                android:textDirection="rtl"
-                android:id="@+id/etProfileUserEmail"
-                android:maxLines="1"
-                android:imeOptions="actionDone"
-                android:textColor="#494949"
-                android:padding="5dp"
-                android:backgroundTint="@color/white"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <!-- Input Group -->
-        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/edit_profile_input_group_bg"
-            android:layout_marginHorizontal="@dimen/dimen50px"
-            android:layout_marginTop="@dimen/dimen70px"
-            android:paddingHorizontal="@dimen/dimen105px"
-            android:paddingVertical="@dimen/dimen20px">
+            android:id="@+id/btnProfileUpdate"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/dimen105px"
+            android:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/bg_round_border"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/assigned_marchantine_names"
-                android:textColor="#BDBDBD"
-                android:textSize="12sp"/>
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/etAssignedName"
-                android:textSize="15sp"
-                android:textAlignment="viewStart"
-                android:textDirection="rtl"
-                android:textColor="#494949"
-                android:padding="5dp"
-                android:backgroundTint="@color/white"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <!-- Input Group -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/tvProfileChangePassword"
+            style="@style/heading"
+            android:text="@string/change_password"
+            android:textColor="@color/pink"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnAssignedBack"
-        android:text="@string/save"
-        android:textColor="@color/white"
-        android:layout_margin="@dimen/dimen105px"
-        android:backgroundTint="@color/colorPrimary"
-        android:background="@drawable/bg_round_border"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ProgressBar
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_gravity="center"
-        android:id="@+id/tvProfileChangePassword"
-        style="@style/heading"
-        android:text="@string/change_password"
-        android:textColor="@color/pink"/>
+        android:visibility="gone"
+        android:id="@+id/progressBarProfile"/>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>

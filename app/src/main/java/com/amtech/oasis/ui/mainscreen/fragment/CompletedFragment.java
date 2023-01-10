@@ -23,6 +23,7 @@ import com.amtech.oasis.model.Stores;
 import com.amtech.oasis.model.Tasks;
 import com.amtech.oasis.network.ApiClient;
 import com.amtech.oasis.network.ApiInterface;
+import com.amtech.oasis.ui.detailscreen.dialog.CompletedDialog;
 import com.amtech.oasis.ui.mainscreen.adapter.CompletedTaskAdapter;
 import com.amtech.oasis.util.SharedPreferenceManager;
 
@@ -119,6 +120,15 @@ public class CompletedFragment extends Fragment {
             @Override
             public void itemClickAllAssign(int position) {
 
+            }
+
+            @Override
+            public void showDialog(String imageUrl) {
+                CompletedDialog dialogSuccess = new CompletedDialog();
+                Bundle bundle = new Bundle();
+                bundle.putString("URL",imageUrl);
+                dialogSuccess.setArguments(bundle);
+                dialogSuccess.show(requireActivity().getSupportFragmentManager(),"COMPLETED");
             }
         });
         recyclerCompleted.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
