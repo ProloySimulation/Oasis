@@ -189,7 +189,14 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
         holder.imvPendingView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickListener.itemClickPending(position);
+                clickListener.itemClickPending(position,"view");
+            }
+        });
+
+        holder.imvUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickListener.itemClickPending(position,"update");
             }
         });
 
@@ -221,7 +228,7 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imvCompletedView,imvPendingView,imvAssignedView;
+        ImageView imvCompletedView,imvPendingView,imvAssignedView,imvUpdate;
         AppCompatTextView tvAssignStoreName,tvPendingTaskName,tvPendingTaskDate,tvAssignedCountry,tvAssignedRegion
                 ,tvAssignLat,tvAssignLong,tvCompletedTaskNam,tvCompletedStartDate,tvCompletedEndDate;
         TableLayout tableCompleted,tablePending,tableAllAssigned;
@@ -233,6 +240,7 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
             imvCompletedView = itemView.findViewById(R.id.imvViewCompletedTask);
             imvPendingView = itemView.findViewById(R.id.imvPendingView);
             imvAssignedView = itemView.findViewById(R.id.imvViewAllAssigned);
+            imvUpdate = itemView.findViewById(R.id.imvUpdate);
 
             tvAssignStoreName = itemView.findViewById(R.id.tvAssignStoreName);
 
@@ -259,7 +267,7 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
     public interface ClickListener
     {
         void itemClickCompleted(int position);
-        void itemClickPending(int position);
+        void itemClickPending(int position,String update);
         void itemClickAllAssign(int position);
         void showDialog(String imageUrl);
     }

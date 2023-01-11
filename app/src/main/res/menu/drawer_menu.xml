@@ -10,12 +10,23 @@
         android:id="@+id/dn_stores"
         android:title="@string/stores"
         android:icon="@drawable/ic_store"/>
-
+<!--
     <item
         android:id="@+id/dn_task"
         android:title="@string/task"
-        android:icon="@drawable/ic_task"/>
+        android:icon="@drawable/ic_task"/>-->
 
+    <item
+        android:id="@+id/dn_pending"
+        android:title="@string/pending_task"
+        android:icon="@drawable/ic_pending"/>
+
+    <item
+        android:id="@+id/dn_complete"
+        android:title="@string/completed_task"
+        android:icon="@drawable/ic_completed"/>
+
+<!--
     <group
         android:checkableBehavior="single"
         android:visible="false"
@@ -23,46 +34,31 @@
 
         <item
             android:id="@+id/dn_pending"
-            android:checkable="true"
             android:title="@string/pending_task"
             android:icon="@drawable/ic_pending"/>
 
         <item
             android:id="@+id/dn_complete"
-            android:checkable="true"
             android:title="@string/completed_task"
             android:icon="@drawable/ic_completed"/>
 
     </group>
+-->
 
-    <item
-        android:id="@+id/dn_profile"
-        android:title="@string/profile"
-        android:icon="@drawable/ic_profile"/>
-    <!--<group
-        android:id="@+id/android5">
-    <item
-        android:id="@+id/dn_my_wallet"
-        android:title="@string/my_wallet"
-        android:icon="@drawable/my_wallet"/>
+    <group>
+
+        <item
+            android:id="@+id/dn_profile"
+            android:title="@string/profile"
+            android:icon="@drawable/ic_profile"/>
     </group>
-    <group
-        android:id="@+id/android6">
-    <item
-        android:id="@+id/dn_invite_friend"
-        android:title="@string/invite_friend"
-        android:icon="@drawable/invite_friends"/>
-    </group>-->
-    <!--<group
-        android:id="@+id/android7">
-    <item
-        android:id="@+id/dn_notifications"
-        android:title="@string/notifications"
-        android:icon="@drawable/notifications"/>
-    </group>-->
 
-    <item
-        android:id="@+id/dn_signout"
-        android:title="@string/sign_out"
-        android:icon="@drawable/ic_signout"/>
+    <group>
+
+        <item
+            android:id="@+id/dn_signout"
+            android:title="@string/sign_out"
+            android:icon="@drawable/ic_signout"/>
+
+    </group>
 </menu>

@@ -1,8 +1,12 @@
 package com.amtech.oasis.ui.mainscreen.fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -25,6 +29,10 @@ import com.amtech.oasis.network.ApiClient;
 import com.amtech.oasis.network.ApiInterface;
 import com.amtech.oasis.ui.mainscreen.adapter.CompletedTaskAdapter;
 import com.amtech.oasis.util.SharedPreferenceManager;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +47,7 @@ public class PendingTaskFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private CompletedTaskAdapter adapter;
+    private FusedLocationProviderClient client;
     private AppCompatImageView imvBack;
     private HashMap<String, String> headerMap = new HashMap<String, String>();
     private String token;
@@ -109,10 +118,20 @@ public class PendingTaskFragment extends Fragment {
             }
 
             @Override
-            public void itemClickPending(int position) {
-                Bundle bundle = new Bundle();
-                bundle.putString("TASKID",arrayList.get(position).getTaskId());
-                Navigation.findNavController(requireView()).navigate(R.id.action_pendingTaskFragment_to_pendingDetailFragment,bundle);
+            public void itemClickPending(int position,String update) {
+                if(update.equals("view"))
+                {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("TASKID",arrayList.get(position).getTaskId());
+                    bundle.putString("EDITABLE","NO");
+                    Navigation.findNavController(requireView()).navigate(R.id.action_pendingTaskFragment_to_pendingDetailFragment,bundle);
+                }
+                else
+                {
+                    double storeLat = Double.parseDouble(arrayList.get(position).getStores().get(0).getStoreLat());
+                    double storeLong = Double.parseDouble(arrayList.get(position).getStores().get(0).getStoreLong());
+                    getmylocation(storeLat,storeLong,arrayList,position);
+                }
             }
 
             @Override
@@ -130,5 +149,62 @@ public class PendingTaskFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+    }
+
+    public void getmylocation(double storeLat,double storeLong,List<AssignStorArr> arrayList,int position) {
+
+        if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        else
+        {
+
+            client = LocationServices.getFusedLocationProviderClient(requireActivity());
+            Task<Location> task = client.getLastLocation();
+            task.addOnSuccessListener(new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(final Location location) {
+
+                    if(location!=null)
+                    {
+//                        progressBar.setVisibility(View.GONE);
+                        double marchandaiserLatitute = location.getLatitude();
+                        double marchandaiserLongitute = location.getLongitude();
+                        calculateLocationDifference(storeLat,storeLong,marchandaiserLatitute,marchandaiserLongitute,arrayList,position);
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(), "Location Error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private float calculateLocationDifference(double storeLat,double storeLong,double marchandaiserLatitute,double marchandaiserLongitute,
+                                              List<AssignStorArr> arrayList,int position) {
+        float[] dist = new float[1];
+        float maxDistance = 100.0f;
+        Location.distanceBetween(storeLat,
+                storeLong,
+                marchandaiserLatitute,
+                marchandaiserLongitute, dist);
+
+        if(dist[0]<maxDistance)
+        {
+            Bundle bundle = new Bundle();
+            bundle.putString("TASKID",arrayList.get(position).getTaskId());
+            bundle.putString("EDITABLE","YES");
+            Navigation.findNavController(requireView()).navigate(R.id.action_pendingTaskFragment_to_pendingDetailFragment,bundle);
+        }
+
+        else
+        {
+            Toast.makeText(requireActivity(), "You are not in the zone", Toast.LENGTH_SHORT).show();
+        }
+
+        return dist[0];
     }
 }

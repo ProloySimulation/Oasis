@@ -113,7 +113,7 @@ public class AllAssignedFragment extends Fragment {
             }
 
             @Override
-            public void itemClickPending(int position) {
+            public void itemClickPending(int position,String update) {
 
             }
 

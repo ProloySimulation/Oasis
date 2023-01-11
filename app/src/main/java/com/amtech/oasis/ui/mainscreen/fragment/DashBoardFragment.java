@@ -1,11 +1,17 @@
 package com.amtech.oasis.ui.mainscreen.fragment;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -15,6 +21,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -28,6 +35,10 @@ import com.amtech.oasis.network.ApiClient;
 import com.amtech.oasis.network.ApiInterface;
 import com.amtech.oasis.ui.mainscreen.activity.ActivityLogin;
 import com.amtech.oasis.util.SharedPreferenceManager;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.HashMap;
@@ -41,13 +52,13 @@ import retrofit2.Response;
 public class DashBoardFragment extends Fragment{
 
     private CardView cardCompleted,cardPending,cardAllAssigned;
+    private boolean isMembersVisible = false;
     private HashMap<String, String> headerMap = new HashMap<String, String>();
     private AppCompatTextView tvCompletedTask,tvPendingTask,tvAssignedTask;
     private DrawerLayout drawerLayout ;
     private NavigationView navigationView;
     private ImageView imvDrawer;
     private String token;
-    private boolean isMediaVisible= false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +67,10 @@ public class DashBoardFragment extends Fragment{
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
 
         init(view);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            getPermission();
+        }
         getDashboardData();
         navigationView.bringToFront();
 
@@ -107,38 +122,23 @@ public class DashBoardFragment extends Fragment{
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
 
                 switch (item.getItemId()){
                     case R.id.dn_dashboard:
                         drawerLayout.close();
-                        /*menu.findItem(R.id.dn_pending).setVisible(false);
-                        menu.findItem(R.id.dn_complete).setVisible(false);*/
                         break;
 
                     case R.id.dn_stores:
                         Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_allAssignedFragment);
                         break;
 
-                    case R.id.dn_pending:
-                        Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_pendingTaskFragment);
-                        break;
-
                     case R.id.dn_complete:
                         Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_completedFragment);
                         break;
 
-                    case R.id.dn_task:
-                        if (!isMediaVisible) {
-//                            menuItemArrow.setRotation(90f);//to rotating arrow to down
-                            navigationView.getMenu().setGroupVisible(R.id.dn_all_task, true);
-                            isMediaVisible= true;
-                        } else {
-//                            menuItemArrow.setRotation(0f);
-                            navigationView.getMenu().setGroupVisible(R.id.dn_all_task, false);
-                            isMediaVisible= false;
-                        }
-                        return true;
+                    case R.id.dn_pending:
+                        Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_pendingTaskFragment);
+                        break;
 
                     case R.id.dn_profile:
                         Navigation.findNavController(requireView()).navigate(R.id.action_dashBoardFragment_to_profileFragment);
@@ -188,4 +188,67 @@ public class DashBoardFragment extends Fragment{
             }
         });
     }
+
+    // Location
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void getPermission()
+    {
+//        progressBar.setVisibility(View.VISIBLE);
+        ActivityResultLauncher<String[]> locationPermissionRequest =
+                registerForActivityResult(new ActivityResultContracts
+                                .RequestMultiplePermissions(), result -> {
+                            Boolean fineLocationGranted = result.getOrDefault(
+                                    Manifest.permission.ACCESS_FINE_LOCATION, false);
+                            Boolean coarseLocationGranted = result.getOrDefault(
+                                    Manifest.permission.ACCESS_COARSE_LOCATION, false);
+                            if (fineLocationGranted != null && fineLocationGranted) {
+//                                getmylocation();
+                            } else if (coarseLocationGranted != null && coarseLocationGranted) {
+                                // Only approximate location access granted.
+//                                getmylocation();
+                            } else {
+                                // No location access granted.
+                            }
+                        }
+                );
+
+        locationPermissionRequest.launch(new String[] {
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        });
+    }
+
+    /*public void getmylocation() {
+
+        if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        else
+        {
+
+            client = LocationServices.getFusedLocationProviderClient(requireActivity());
+            Task<Location> task = client.getLastLocation();
+            task.addOnSuccessListener(new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(final Location location) {
+
+                    if(location!=null)
+                    {
+//                        progressBar.setVisibility(View.GONE);
+                        double latitute = location.getLatitude();
+                        double longitute = location.getLongitude();
+*//*                    latitute = 26.4560;
+                    longitute = 88.6663;*//*
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(), "Location Error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }*/
 }

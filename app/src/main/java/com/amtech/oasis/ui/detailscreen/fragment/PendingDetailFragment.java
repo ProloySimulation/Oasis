@@ -124,7 +124,13 @@ public class PendingDetailFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerPendingCheckList);
         progressBar = view.findViewById(R.id.progressBarPendingDetail);
         taskId = getArguments().getString("TASKID");
+        String editable = getArguments().getString("EDITABLE");
         token = SharedPreferenceManager.getInstance(getActivity()).GetUserToken();
+
+        if(editable.equals("NO"))
+        {
+            btnUpdate.setVisibility(View.GONE);
+        }
     }
 
     private void getPendingTask()

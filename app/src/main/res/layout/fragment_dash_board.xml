@@ -246,10 +246,10 @@
                                 android:textColor="@color/black" />
 
                             <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvAssignedTask"
                                 style="@style/heading"
                                 android:layout_gravity="end"
                                 android:layout_marginStart="@dimen/dimSpace1"
-                                android:id="@+id/tvAssignedTask"
                                 android:layout_toEndOf="@+id/imgViewNearByIcon"
                                 android:text="40"
                                 android:textColor="@color/white" />
