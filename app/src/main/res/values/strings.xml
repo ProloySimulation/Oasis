@@ -64,4 +64,6 @@
     <string name="old_password">Old Password</string>
     <string name="click_to_upload_image"><u>Click To Upload Image</u></string>
     <string name="end_date">End Date</string>
+    <string name="id">Id</string>
+    <string name="store_id">Store Id</string>
 </resources>

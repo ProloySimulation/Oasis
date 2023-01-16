@@ -26,32 +26,6 @@ public class AssignStorArr {
     @SerializedName("store")
     private List<Stores> stores;
 
-    @SerializedName("latitude")
-    private String storeLat;
-    @SerializedName("longitude")
-    private String storeLong;
-    @SerializedName("region")
-    private String region;
-    @SerializedName("country")
-    private String country;
-
-
-    public String getStoreLat() {
-        return storeLat;
-    }
-
-    public String getStoreLong() {
-        return storeLong;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
     public String getTaskStatus() {
         return taskStatus;
     }

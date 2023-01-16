@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.amtech.oasis.R;
+import com.amtech.oasis.model.AssignDataObj;
 import com.amtech.oasis.model.AssignStorArr;
 import com.amtech.oasis.model.StoreDataObj;
 import com.amtech.oasis.model.Stores;
@@ -32,7 +33,7 @@ import retrofit2.Response;
 
 public class AssignedDetailFragment extends Fragment {
 
-    private AppCompatTextView tvStoreName,tvStoreLat,tvStoreLong,tvStoreCountry,tvStoreRegion;
+    private AppCompatTextView tvStoreId,tvStoreName,tvStoreLat,tvStoreLong,tvStoreCountry,tvStoreRegion;
     private AppCompatImageView imvBack;
     private AppCompatButton btnBack;
     private HashMap<String, String> headerMap = new HashMap<String, String>();
@@ -69,17 +70,17 @@ public class AssignedDetailFragment extends Fragment {
         headerMap.put("Authorization","Bearer "+token);
         ApiClient apiClient = new ApiClient();
         ApiInterface service = apiClient.createService(ApiInterface.class);
-        Call<StoreDataObj> call = service.getStoreInfo(headerMap,storeId);
-        call.enqueue(new Callback<StoreDataObj>() {
+        Call<AssignDataObj> call = service.getStoreInfo(headerMap,storeId);
+        call.enqueue(new Callback<AssignDataObj>() {
 
             @Override
-            public void onResponse(Call<StoreDataObj> call, Response<StoreDataObj> response) {
+            public void onResponse(Call<AssignDataObj> call, Response<AssignDataObj> response) {
 
                 if (response.isSuccessful()) {
-                    StoreDataObj storeDataObj = response.body();
+                    AssignDataObj storeDataObj = response.body();
 
                     if (storeDataObj != null) {
-                        setUI(storeDataObj.getAssignStorArr().get(0).getTaskName(),storeDataObj.getAssignStorArr().get(0).getStoreLat(),storeDataObj.getAssignStorArr().get(0).getStoreLong(),
+                        setUI(storeDataObj.getAssignStorArr().get(0).getStoreId(),storeDataObj.getAssignStorArr().get(0).getStoreName(),storeDataObj.getAssignStorArr().get(0).getStoreLat(),storeDataObj.getAssignStorArr().get(0).getStoreLong(),
                                 storeDataObj.getAssignStorArr().get(0).getCountry(),storeDataObj.getAssignStorArr().get(0).getRegion());
                     }
                     else
@@ -93,7 +94,7 @@ public class AssignedDetailFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<StoreDataObj> call, Throwable t) {
+            public void onFailure(Call<AssignDataObj> call, Throwable t) {
 
                 Log.d("ListSize", " - > Error    " + t.getMessage());
             }
@@ -101,6 +102,7 @@ public class AssignedDetailFragment extends Fragment {
     }
 
     private void init(View view) {
+        tvStoreId = view.findViewById(R.id.tvAssignStoreDetailId);
         tvStoreName = view.findViewById(R.id.tvAssignStoreDetailName);
         tvStoreLat = view.findViewById(R.id.tvAssignStoreDetailLat);
         tvStoreLong = view.findViewById(R.id.tvAssignStoreDetailLong);
@@ -112,8 +114,9 @@ public class AssignedDetailFragment extends Fragment {
         token = SharedPreferenceManager.getInstance(getActivity()).GetUserToken();
     }
 
-    private void setUI(String name,String lat,String longitute,String country,String region)
+    private void setUI(String storeId,String name,String lat,String longitute,String country,String region)
     {
+        tvStoreId.setText(storeId);
         tvStoreName.setText(name);
         tvStoreLat.setText(lat);
         tvStoreLong.setText(longitute);

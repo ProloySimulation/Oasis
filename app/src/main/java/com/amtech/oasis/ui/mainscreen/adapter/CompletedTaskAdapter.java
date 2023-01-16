@@ -172,6 +172,7 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
         if(taskType.equals("assigned"))
         {
             holder.tableAllAssigned.setVisibility(View.VISIBLE);
+            holder.tvAssignedId.setText(arrayList.get(position).getStoreId());
             holder.tvAssignStoreName.setText(arrayList.get(position).getStoreName());
             holder.tvAssignedCountry.setText(arrayList.get(position).getCountry());
             holder.tvAssignedRegion.setText(arrayList.get(position).getRegion());
@@ -230,7 +231,7 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
 
         ImageView imvCompletedView,imvPendingView,imvAssignedView,imvUpdate;
         AppCompatTextView tvAssignStoreName,tvPendingTaskName,tvPendingTaskDate,tvAssignedCountry,tvAssignedRegion
-                ,tvAssignLat,tvAssignLong,tvCompletedTaskNam,tvCompletedStartDate,tvCompletedEndDate;
+                ,tvAssignLat,tvAssignLong,tvAssignedId,tvCompletedTaskNam,tvCompletedStartDate,tvCompletedEndDate;
         TableLayout tableCompleted,tablePending,tableAllAssigned;
         LinearLayoutCompat layoutCheckList,layoutCompletedCheckList;
 
@@ -256,6 +257,7 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
             tvAssignedRegion = itemView.findViewById(R.id.tvAssignedStoreRegion);
             tvAssignLat = itemView.findViewById(R.id.tvAllAssignedLat);
             tvAssignLong = itemView.findViewById(R.id.tvAllAssignedLong);
+            tvAssignedId = itemView.findViewById(R.id.tvAssignedStoreId);
 
             tvPendingTaskName = itemView.findViewById(R.id.tvPendingTaksName);
             tvPendingTaskDate = itemView.findViewById(R.id.tvPendingTaskDate);

@@ -100,7 +100,7 @@
                             android:padding="@dimen/dimen35px"
                             android:gravity="center"
                             style="@style/paragraph"
-                            android:text="@string/task_name"/>
+                            android:text="@string/id"/>
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="0dp"

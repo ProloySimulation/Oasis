@@ -53,6 +53,7 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -223,11 +224,12 @@ public class ProfileFragment extends Fragment {
         RequestBody updateUserId = RequestBody.create(MediaType.parse("text/plain"), userId);
         RequestBody updateUserName = RequestBody.create(MediaType.parse("text/plain"), name);
         RequestBody uploadImage = RequestBody.create(MediaType.parse("image/*"), image);
+        MultipartBody.Part parts = MultipartBody.Part.createFormData("profile_image", image.getName(), uploadImage);
 
         headerMap.put("Authorization","Bearer "+token);
         ApiClient apiClient = new ApiClient();
         ApiInterface service = apiClient.createService(ApiInterface.class);
-        Call<Profile> call = service.profileUpdateImage(headerMap,updateUserId,updateUserName,uploadImage);
+        Call<Profile> call = service.profileUpdateImage(headerMap,updateUserId,updateUserName,parts);
         call.enqueue(new Callback<Profile>() {
 
             @Override

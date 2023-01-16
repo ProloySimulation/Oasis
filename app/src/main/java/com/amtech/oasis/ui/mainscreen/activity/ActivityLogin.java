@@ -28,7 +28,7 @@ public class ActivityLogin extends AppCompatActivity {
 
     private AppCompatButton btnSignIn;
     private ProgressBar progressBar;
-    private AppCompatTextView tvForgotPass;
+//    private AppCompatTextView tvForgotPass;
     private AppCompatEditText etEmail, etPassword;
 
     @Override
@@ -45,20 +45,20 @@ public class ActivityLogin extends AppCompatActivity {
             }
         });
 
-        tvForgotPass.setOnClickListener(new View.OnClickListener() {
+        /*tvForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ActivityResetPassword.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
     private void viewInit() {
         etEmail = findViewById(R.id.etLoginEmail);
         etPassword = findViewById(R.id.etLoginPassword);
         btnSignIn = findViewById(R.id.btnLoginSignIn);
-        tvForgotPass = findViewById(R.id.tvLoginForgotPassword);
+//        tvForgotPass = findViewById(R.id.tvLoginForgotPassword);
         progressBar = findViewById(R.id.progressBarLogin);
     }
 

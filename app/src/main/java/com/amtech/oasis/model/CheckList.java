@@ -13,6 +13,24 @@ public class CheckList {
     private String checkStatus;
     @SerializedName("image")
     private String image;
+    @SerializedName("longitude")
+    private String storeLong;
+    @SerializedName("store_id")
+    private String storeId;
+    @SerializedName("latitude")
+    private String storeLat;
+
+    public String getStoreLong() {
+        return storeLong;
+    }
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public String getStoreLat() {
+        return storeLat;
+    }
 
     public String getImage() {
         return image;

@@ -1,5 +1,6 @@
 package com.amtech.oasis.ui.detailscreen.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,12 +27,14 @@ import java.util.ArrayList;
 public class PendingCheckListAdapter extends RecyclerView.Adapter<PendingCheckListAdapter.ViewHolder>{
 
     private Context context;
+    private boolean viewable;
     private ArrayList<CheckList> arrayList;
     private ClickListener clickListener;
 
-    public PendingCheckListAdapter(Context context, ArrayList<CheckList> arrayList,ClickListener clickListener) {
+    public PendingCheckListAdapter(Context context, ArrayList<CheckList> arrayList,boolean viewable,ClickListener clickListener) {
         this.context = context;
         this.arrayList = arrayList;
+        this.viewable = viewable;
         this.clickListener = clickListener;
     }
 
@@ -47,7 +50,7 @@ public class PendingCheckListAdapter extends RecyclerView.Adapter<PendingCheckLi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PendingCheckListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PendingCheckListAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.tvCheckName.setText(this.arrayList.get(position).getCheckListName());
 
@@ -62,22 +65,29 @@ public class PendingCheckListAdapter extends RecyclerView.Adapter<PendingCheckLi
             holder.parentLayout.setVisibility(View.GONE);
         }
 
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
+        /*holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickListener.itemClick(position);
                 holder.tvCheckName.setTextColor(context.getResources().getColor(R.color.colorPrimary));
             }
-        });
+        });*/
 
-        holder.tvUploadImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickListener.itemClick(position);
-                holder.tvCheckName.setTextColor(context.getResources().getColor(R.color.colorPrimary));
-            }
-        });
-
+        if(!viewable)
+        {
+            holder.tvUploadImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickListener.itemClick(position);
+                    holder.tvCheckName.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+                }
+            });
+        }
+        else
+        {
+            holder.rbYes.setEnabled(false);
+            holder.rbNo.setEnabled(false);
+        }
 
         holder.rbCheckList.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -106,6 +116,7 @@ public class PendingCheckListAdapter extends RecyclerView.Adapter<PendingCheckLi
         AppCompatTextView tvCheckName,tvUploadImage;
         LinearLayoutCompat parentLayout,layoutSelection;
         RadioGroup rbCheckList;
+        RadioButton rbYes,rbNo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -114,6 +125,9 @@ public class PendingCheckListAdapter extends RecyclerView.Adapter<PendingCheckLi
             parentLayout = itemView.findViewById(R.id.checkListParentLayout);
             layoutSelection = itemView.findViewById(R.id.layoutSelection);
             rbCheckList = itemView.findViewById(R.id.radioGroupCheckList);
+
+            rbYes = itemView.findViewById(R.id.radioButtonPositive);
+            rbNo = itemView.findViewById(R.id.radioButtonNegative);
         }
     }
 

@@ -80,7 +80,6 @@ public class PendingDetailFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_pending_detail, container, false);
 
         init(view);
-        getPendingTask();
 
         imvBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,10 +129,11 @@ public class PendingDetailFragment extends Fragment {
         if(editable.equals("NO"))
         {
             btnUpdate.setVisibility(View.GONE);
+            getPendingTask("NO");
         }
     }
 
-    private void getPendingTask()
+    private void getPendingTask(String editable)
     {
         headerMap.put("Authorization","Bearer "+token);
         ApiClient apiClient = new ApiClient();
@@ -151,7 +151,14 @@ public class PendingDetailFragment extends Fragment {
 
                         for(int i =0;i<storeDataObj.getAssignStorArr().size();i++)
                         {
-                            setRecycler(storeDataObj.getAssignStorArr().get(i).getCheckLists());
+                            if(editable.equals("NO"))
+                            {
+                                setRecycler(storeDataObj.getAssignStorArr().get(i).getCheckLists(),true);
+                            }
+                            else
+                            {
+                                setRecycler(storeDataObj.getAssignStorArr().get(i).getCheckLists(),false);
+                            }
                             setUi(storeDataObj.getAssignStorArr().get(i).getTaskName(),
                                     storeDataObj.getAssignStorArr().get(i).getTaskDate());
                         }
@@ -176,80 +183,96 @@ public class PendingDetailFragment extends Fragment {
 
     private void taskUpdateData()
     {
-        progressBar.setVisibility(View.VISIBLE);
-        RequestBody checkIdNumber = RequestBody.create(MediaType.parse("text/plain"), checkId);
-        RequestBody pendingTaskId = RequestBody.create(MediaType.parse("text/plain"), taskId);
-        RequestBody checkAnswer = RequestBody.create(MediaType.parse("text/plain"), checkIdAnswer);
+        if(!checkIdAnswer.isEmpty())
+        {
+            progressBar.setVisibility(View.VISIBLE);
+            RequestBody checkIdNumber = RequestBody.create(MediaType.parse("text/plain"), checkId);
+            RequestBody pendingTaskId = RequestBody.create(MediaType.parse("text/plain"), taskId);
+            RequestBody checkAnswer = RequestBody.create(MediaType.parse("text/plain"), checkIdAnswer);
 
-        headerMap.put("Authorization","Bearer "+token);
-        ApiClient apiClient = new ApiClient();
-        ApiInterface service = apiClient.createService(ApiInterface.class);
-        Call<Tasks> call = service.taskUpdate(headerMap,checkIdNumber,pendingTaskId,checkAnswer);
-        call.enqueue(new Callback<Tasks>() {
+            headerMap.put("Authorization","Bearer "+token);
+            ApiClient apiClient = new ApiClient();
+            ApiInterface service = apiClient.createService(ApiInterface.class);
+            Call<Tasks> call = service.taskUpdate(headerMap,checkIdNumber,pendingTaskId,checkAnswer);
+            call.enqueue(new Callback<Tasks>() {
 
-            @Override
-            public void onResponse(Call<Tasks> call, Response<Tasks> response) {
+                @Override
+                public void onResponse(Call<Tasks> call, Response<Tasks> response) {
 
-                if (response.isSuccessful()) {
-                    progressBar.setVisibility(View.GONE);
-                    Tasks storeDataObj = response.body();
-                    Toast.makeText(getActivity(), storeDataObj.getMessage(), Toast.LENGTH_SHORT).show();
-                    imvCapture.setImageResource(R.drawable.ic_camera);
+                    if (response.isSuccessful()) {
+                        progressBar.setVisibility(View.GONE);
+                        Tasks storeDataObj = response.body();
+                        Toast.makeText(getActivity(), storeDataObj.getMessage(), Toast.LENGTH_SHORT).show();
+                        imvCapture.setImageResource(R.drawable.ic_camera);
+                    }
+
+                    else {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(getActivity(), "User Id Is Logged In Another Device", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
-                else {
+                @Override
+                public void onFailure(Call<Tasks> call, Throwable t) {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getActivity(), "User Id Is Logged In Another Device", Toast.LENGTH_SHORT).show();
+                    Log.d("ListSize", " - > Error    " + t.getMessage());
                 }
+            });
+        }
+        else
+        {
+            Toast.makeText(requireActivity(), "Please Select An Answer", Toast.LENGTH_SHORT).show();
+        }
 
-            }
-
-            @Override
-            public void onFailure(Call<Tasks> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Log.d("ListSize", " - > Error    " + t.getMessage());
-            }
-        });
     }
 
     private void taskUpdateImage()
     {
-        progressBar.setVisibility(View.VISIBLE);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), uploadImage);
-        MultipartBody.Part parts = MultipartBody.Part.createFormData("image", uploadImage.getName(), requestBody);
-        RequestBody checkIdNumber = RequestBody.create(MediaType.parse("text/plain"), checkId);
-        RequestBody pendingTaskId = RequestBody.create(MediaType.parse("text/plain"), taskId);
+        if(uploadImage!=null)
+        {
+            progressBar.setVisibility(View.VISIBLE);
+            RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), uploadImage);
+            MultipartBody.Part parts = MultipartBody.Part.createFormData("image", uploadImage.getName(), requestBody);
+            RequestBody checkIdNumber = RequestBody.create(MediaType.parse("text/plain"), checkId);
+            RequestBody pendingTaskId = RequestBody.create(MediaType.parse("text/plain"), taskId);
 
-        headerMap.put("Authorization","Bearer "+token);
-        ApiClient apiClient = new ApiClient();
-        ApiInterface service = apiClient.createService(ApiInterface.class);
-        Call<Tasks> call = service.taskUpdateImage(headerMap,checkIdNumber,pendingTaskId,parts);
-        call.enqueue(new Callback<Tasks>() {
+            headerMap.put("Authorization","Bearer "+token);
+            ApiClient apiClient = new ApiClient();
+            ApiInterface service = apiClient.createService(ApiInterface.class);
+            Call<Tasks> call = service.taskUpdateImage(headerMap,checkIdNumber,pendingTaskId,parts);
+            call.enqueue(new Callback<Tasks>() {
 
-            @Override
-            public void onResponse(Call<Tasks> call, Response<Tasks> response) {
+                @Override
+                public void onResponse(Call<Tasks> call, Response<Tasks> response) {
 
-                if (response.isSuccessful()) {
-                    progressBar.setVisibility(View.GONE);
-                    Tasks storeDataObj = response.body();
-                    Toast.makeText(getActivity(), storeDataObj.getMessage(), Toast.LENGTH_SHORT).show();
-                    uploadImage = null;
+                    if (response.isSuccessful()) {
+                        progressBar.setVisibility(View.GONE);
+                        Tasks storeDataObj = response.body();
+                        Toast.makeText(getActivity(), storeDataObj.getMessage(), Toast.LENGTH_SHORT).show();
+                        uploadImage = null;
+                    }
+
+                    else {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(getActivity(), "User Id Is Logged In Another Device", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
-                else {
+                @Override
+                public void onFailure(Call<Tasks> call, Throwable t) {
+
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getActivity(), "User Id Is Logged In Another Device", Toast.LENGTH_SHORT).show();
+                    Log.d("ListSize", " - > Error    " + t.getMessage());
                 }
+            });
+        }
+        else
+        {
+            Toast.makeText(requireActivity(), "Please Select An Image", Toast.LENGTH_SHORT).show();
+        }
 
-            }
-
-            @Override
-            public void onFailure(Call<Tasks> call, Throwable t) {
-
-                progressBar.setVisibility(View.GONE);
-                Log.d("ListSize", " - > Error    " + t.getMessage());
-            }
-        });
     }
 
     private void setUi(String taskname,String taskDate)
@@ -258,9 +281,9 @@ public class PendingDetailFragment extends Fragment {
         tvTaskDate.setText(taskDate);
     }
 
-    private void setRecycler(ArrayList<CheckList> arrayList)
+    private void setRecycler(ArrayList<CheckList> arrayList,boolean viewable)
     {
-        adapter = new PendingCheckListAdapter(getActivity(), arrayList, new PendingCheckListAdapter.ClickListener() {
+        adapter = new PendingCheckListAdapter(getActivity(), arrayList,viewable, new PendingCheckListAdapter.ClickListener() {
             @Override
             public void itemClick(int position) {
                 checkId = arrayList.get(position).getCheckId();

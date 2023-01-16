@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -41,6 +42,7 @@ import retrofit2.Response;
 public class CompletedDetailFragment extends Fragment {
 
     private AppCompatTextView tvTaskName,tvTaskDate;
+    private CardView cardCaptureImage;
     private PendingCheckListAdapter adapter;
     private AppCompatImageView imvBack;
     private AppCompatButton btnBack;
@@ -143,6 +145,7 @@ public class CompletedDetailFragment extends Fragment {
                                 }
                                 else
                                 {
+                                    cardCaptureImage.setVisibility(View.VISIBLE);
                                     AppCompatImageView imvCapture = new AppCompatImageView(getActivity());
                                     imvCapture.setLayoutParams(
                                             new ViewGroup.LayoutParams(
@@ -212,6 +215,7 @@ public class CompletedDetailFragment extends Fragment {
         tvTaskName = view.findViewById(R.id.tvCompletedDetailTaskName);
         tvTaskDate = view.findViewById(R.id.tvCompletedDetailTaskDate);
         layoutCaptureImage = view.findViewById(R.id.layoutCaptureImage);
+        cardCaptureImage = view.findViewById(R.id.cardCompletedDetailImage);
         imvBack = view.findViewById(R.id.imvBackCompletedTaskDetail);
         btnBack = view.findViewById(R.id.btnCompletedBack);
 //        recyclerView = view.findViewById(R.id.rvCompletedDetailTaskCheck);

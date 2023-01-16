@@ -102,11 +102,12 @@
                             style="@style/paragraph"
                             android:textColor="@color/pink"
                             android:layout_margin="@dimen/dimen53px"
-                            android:text="@string/task"/>
+                            android:text="@string/store_id"/>
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/tvAssignStoreDetailId"
                             style="@style/paragraph"
                             android:textColor="@color/colorPrimary"
                             android:layout_margin="@dimen/dimen53px"

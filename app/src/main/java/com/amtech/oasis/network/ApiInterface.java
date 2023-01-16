@@ -1,5 +1,6 @@
 package com.amtech.oasis.network;
 
+import com.amtech.oasis.model.AssignDataObj;
 import com.amtech.oasis.model.AssignStorArr;
 import com.amtech.oasis.model.DashboardObject;
 import com.amtech.oasis.model.Login;
@@ -61,7 +62,7 @@ public interface ApiInterface {
     Call<Password> passwordChange(@HeaderMap Map<String,String> headers,@Body Password password);
 
     @GET("merchandiser/view-store/{id}")
-    Call<StoreDataObj> getStoreInfo(@HeaderMap Map<String,String> headers, @Path("id")String storeId);
+    Call<AssignDataObj> getStoreInfo(@HeaderMap Map<String,String> headers, @Path("id")String storeId);
 
     @POST("merchandiser/update-profile")
     Call<Profile> profileUpdate(@HeaderMap Map<String,String> headers, @Body Profile profile);
@@ -71,5 +72,5 @@ public interface ApiInterface {
     Call<Profile> profileUpdateImage(@HeaderMap Map<String,String> headers,
                                      @Part("user_id") RequestBody userId,
                                      @Part("name") RequestBody userName,
-                                     @Part("profile_image") RequestBody profileImage);
+                                     @Part MultipartBody.Part image);
 }

@@ -128,9 +128,16 @@ public class PendingTaskFragment extends Fragment {
                 }
                 else
                 {
-                    double storeLat = Double.parseDouble(arrayList.get(position).getStores().get(0).getStoreLat());
-                    double storeLong = Double.parseDouble(arrayList.get(position).getStores().get(0).getStoreLong());
-                    getmylocation(storeLat,storeLong,arrayList,position);
+                    if(arrayList.get(position).getCheckLists().get(0).getStoreLat()!=null)
+                    {
+                        double storeLat = Double.parseDouble(arrayList.get(position).getCheckLists().get(0).getStoreLat());
+                        double storeLong = Double.parseDouble(arrayList.get(position).getCheckLists().get(0).getStoreLat());
+                        getmylocation(storeLat,storeLong,arrayList,position);
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(), "No Lat & Long", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
@@ -186,7 +193,7 @@ public class PendingTaskFragment extends Fragment {
     private float calculateLocationDifference(double storeLat,double storeLong,double marchandaiserLatitute,double marchandaiserLongitute,
                                               List<AssignStorArr> arrayList,int position) {
         float[] dist = new float[1];
-        float maxDistance = 100.0f;
+        float maxDistance = 120.0f;
         Location.distanceBetween(storeLat,
                 storeLong,
                 marchandaiserLatitute,

@@ -71,35 +71,50 @@ public class ActivityResetPassword extends AppCompatActivity {
         String newPassword = etNewPass.getText().toString();
         String confirmPassword = etConfirmPass.getText().toString();
 
-        Password password = new Password(oldPassword,newPassword,confirmPassword);
+        if(newPassword.length()>7)
+        {
+            if(newPassword.equals(confirmPassword))
+            {
+                Password password = new Password(oldPassword,newPassword,confirmPassword);
 
-        ApiClient apiClient = new ApiClient();
-        ApiInterface service = apiClient.createService(ApiInterface.class);
-        Call<Password> call = service.passwordChange(headerMap,password);
-        call.enqueue(new Callback<Password>() {
+                ApiClient apiClient = new ApiClient();
+                ApiInterface service = apiClient.createService(ApiInterface.class);
+                Call<Password> call = service.passwordChange(headerMap,password);
+                call.enqueue(new Callback<Password>() {
 
-            @Override
-            public void onResponse(Call<Password> call, Response<Password> response) {
+                    @Override
+                    public void onResponse(Call<Password> call, Response<Password> response) {
 
-                if (response.isSuccessful()) {
+                        if (response.isSuccessful()) {
 
-                    Password loginResponse = response.body();
+                            Password loginResponse = response.body();
 
-                    if (loginResponse != null) {
-                        Toast.makeText(ActivityResetPassword.this, "Password Changed Successfully", Toast.LENGTH_SHORT).show();
+                            if (loginResponse != null) {
+                                Toast.makeText(ActivityResetPassword.this, "Password Changed Successfully", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(ActivityResetPassword.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
+                        }
+
                     }
-                } else {
-                    Toast.makeText(ActivityResetPassword.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
-                }
 
+                    @Override
+                    public void onFailure(Call<Password> call, Throwable t) {
+
+                        Log.d("ListSize", " - > Error    " + t.getMessage());
+                    }
+                });
             }
-
-            @Override
-            public void onFailure(Call<Password> call, Throwable t) {
-
-                Log.d("ListSize", " - > Error    " + t.getMessage());
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Password Not Match", Toast.LENGTH_SHORT).show();
             }
-        });
+        }
+        else
+        {
+            Toast.makeText(this, "Password Will Be 8 characters", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
