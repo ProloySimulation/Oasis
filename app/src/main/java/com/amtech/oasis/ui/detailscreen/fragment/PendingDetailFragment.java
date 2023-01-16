@@ -131,6 +131,10 @@ public class PendingDetailFragment extends Fragment {
             btnUpdate.setVisibility(View.GONE);
             getPendingTask("NO");
         }
+        else
+        {
+            getPendingTask("YES");
+        }
     }
 
     private void getPendingTask(String editable)

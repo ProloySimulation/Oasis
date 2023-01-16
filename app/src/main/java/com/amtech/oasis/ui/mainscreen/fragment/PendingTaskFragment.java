@@ -131,7 +131,7 @@ public class PendingTaskFragment extends Fragment {
                     if(arrayList.get(position).getCheckLists().get(0).getStoreLat()!=null)
                     {
                         double storeLat = Double.parseDouble(arrayList.get(position).getCheckLists().get(0).getStoreLat());
-                        double storeLong = Double.parseDouble(arrayList.get(position).getCheckLists().get(0).getStoreLat());
+                        double storeLong = Double.parseDouble(arrayList.get(position).getCheckLists().get(0).getStoreLong());
                         getmylocation(storeLat,storeLong,arrayList,position);
                     }
                     else
@@ -179,7 +179,18 @@ public class PendingTaskFragment extends Fragment {
 //                        progressBar.setVisibility(View.GONE);
                         double marchandaiserLatitute = location.getLatitude();
                         double marchandaiserLongitute = location.getLongitude();
-                        calculateLocationDifference(storeLat,storeLong,marchandaiserLatitute,marchandaiserLongitute,arrayList,position);
+//                        calculateLocationDifference(storeLat,storeLong,marchandaiserLatitute,marchandaiserLongitute,arrayList,position);
+                        if(distance(storeLat,storeLong,marchandaiserLatitute,marchandaiserLongitute)<200)
+                        {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("TASKID",arrayList.get(position).getTaskId());
+                            bundle.putString("EDITABLE","YES");
+                            Navigation.findNavController(requireView()).navigate(R.id.action_pendingTaskFragment_to_pendingDetailFragment,bundle);
+                        }
+                        else
+                        {
+                            Toast.makeText(requireActivity(), Integer.toString(distance(storeLat,storeLong,marchandaiserLatitute,marchandaiserLongitute)), Toast.LENGTH_SHORT).show();
+                        }
                     }
                     else
                     {
@@ -190,7 +201,7 @@ public class PendingTaskFragment extends Fragment {
         }
     }
 
-    private float calculateLocationDifference(double storeLat,double storeLong,double marchandaiserLatitute,double marchandaiserLongitute,
+    /*private float calculateLocationDifference(double storeLat,double storeLong,double marchandaiserLatitute,double marchandaiserLongitute,
                                               List<AssignStorArr> arrayList,int position) {
         float[] dist = new float[1];
         float maxDistance = 120.0f;
@@ -213,5 +224,22 @@ public class PendingTaskFragment extends Fragment {
         }
 
         return dist[0];
+    }*/
+
+
+    private static int distance(double storeLat, double storeLong, double marchandaiserLatitute, double marchandaiserLongitute) {
+
+        Location loc1 = new Location("");
+
+        loc1.setLatitude(storeLat);
+        loc1.setLongitude(storeLong);
+
+        Location loc2 = new Location("");
+        loc2.setLatitude(marchandaiserLatitute);
+        loc2.setLongitude(marchandaiserLongitute);
+
+        float distanceInMeters = loc1.distanceTo(loc2);
+
+        return (int) distanceInMeters;
     }
 }
