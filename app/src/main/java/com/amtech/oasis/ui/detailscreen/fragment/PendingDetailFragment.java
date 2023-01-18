@@ -161,6 +161,10 @@ public class PendingDetailFragment extends Fragment {
                             }
                             else
                             {
+                                if(storeDataObj.getAssignStorArr().get(i).getTaskStatus().equals("Completed"))
+                                {
+                                    Navigation.findNavController(requireView()).popBackStack();
+                                }
                                 setRecycler(storeDataObj.getAssignStorArr().get(i).getCheckLists(),false);
                             }
                             setUi(storeDataObj.getAssignStorArr().get(i).getTaskName(),
@@ -208,6 +212,7 @@ public class PendingDetailFragment extends Fragment {
                         Tasks storeDataObj = response.body();
                         Toast.makeText(getActivity(), storeDataObj.getMessage(), Toast.LENGTH_SHORT).show();
                         imvCapture.setImageResource(R.drawable.ic_camera);
+                        getPendingTask("YES");
                     }
 
                     else {
@@ -255,6 +260,7 @@ public class PendingDetailFragment extends Fragment {
                         Tasks storeDataObj = response.body();
                         Toast.makeText(getActivity(), storeDataObj.getMessage(), Toast.LENGTH_SHORT).show();
                         uploadImage = null;
+                        getPendingTask("YES");
                     }
 
                     else {

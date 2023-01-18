@@ -1,8 +1,11 @@
 package com.amtech.oasis.ui.mainscreen.fragment;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -13,6 +16,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -155,7 +159,7 @@ public class PendingTaskFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+//        adapter.notifyDataSetChanged();
     }
 
     public void getmylocation(double storeLat,double storeLong,List<AssignStorArr> arrayList,int position) {
@@ -167,64 +171,57 @@ public class PendingTaskFragment extends Fragment {
         }
         else
         {
+            if(isLocationEnabled())
+            {
+                client = LocationServices.getFusedLocationProviderClient(requireActivity());
+                Task<Location> task = client.getLastLocation();
+                task.addOnSuccessListener(new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(final Location location) {
 
-            client = LocationServices.getFusedLocationProviderClient(requireActivity());
-            Task<Location> task = client.getLastLocation();
-            task.addOnSuccessListener(new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(final Location location) {
-
-                    if(location!=null)
-                    {
-//                        progressBar.setVisibility(View.GONE);
-                        double marchandaiserLatitute = location.getLatitude();
-                        double marchandaiserLongitute = location.getLongitude();
-//                        calculateLocationDifference(storeLat,storeLong,marchandaiserLatitute,marchandaiserLongitute,arrayList,position);
-                        if(distance(storeLat,storeLong,marchandaiserLatitute,marchandaiserLongitute)<200)
+                        if(location!=null)
                         {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("TASKID",arrayList.get(position).getTaskId());
-                            bundle.putString("EDITABLE","YES");
-                            Navigation.findNavController(requireView()).navigate(R.id.action_pendingTaskFragment_to_pendingDetailFragment,bundle);
+//                        progressBar.setVisibility(View.GONE);
+                            double marchandaiserLatitute = location.getLatitude();
+                            double marchandaiserLongitute = location.getLongitude();
+
+                            /*double marchandaiserLatitute = 23.7731;
+                            double marchandaiserLongitute = 90.4133;*/
+
+                            if(distance(storeLat,storeLong,marchandaiserLatitute,marchandaiserLongitute)<200)
+                            {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("TASKID",arrayList.get(position).getTaskId());
+                                bundle.putString("EDITABLE","YES");
+                                Navigation.findNavController(requireView()).navigate(R.id.action_pendingTaskFragment_to_pendingDetailFragment,bundle);
+                            }
+                            else
+                            {
+                                Toast.makeText(requireActivity(), "You are not in zone", Toast.LENGTH_SHORT).show();
+                            }
                         }
                         else
                         {
-                            Toast.makeText(requireActivity(), Integer.toString(distance(storeLat,storeLong,marchandaiserLatitute,marchandaiserLongitute)), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Location Error", Toast.LENGTH_SHORT).show();
                         }
                     }
-                    else
-                    {
-                        Toast.makeText(getActivity(), "Location Error", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                });
+            }
+            else
+            {
+                Toast.makeText(requireActivity(), "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+
         }
     }
 
-    /*private float calculateLocationDifference(double storeLat,double storeLong,double marchandaiserLatitute,double marchandaiserLongitute,
-                                              List<AssignStorArr> arrayList,int position) {
-        float[] dist = new float[1];
-        float maxDistance = 120.0f;
-        Location.distanceBetween(storeLat,
-                storeLong,
-                marchandaiserLatitute,
-                marchandaiserLongitute, dist);
 
-        if(dist[0]<maxDistance)
-        {
-            Bundle bundle = new Bundle();
-            bundle.putString("TASKID",arrayList.get(position).getTaskId());
-            bundle.putString("EDITABLE","YES");
-            Navigation.findNavController(requireView()).navigate(R.id.action_pendingTaskFragment_to_pendingDetailFragment,bundle);
-        }
-
-        else
-        {
-            Toast.makeText(requireActivity(), "You are not in the zone", Toast.LENGTH_SHORT).show();
-        }
-
-        return dist[0];
-    }*/
+    private boolean isLocationEnabled() {
+        LocationManager locationManager = (LocationManager) requireActivity().getSystemService(Context.LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
 
 
     private static int distance(double storeLat, double storeLong, double marchandaiserLatitute, double marchandaiserLongitute) {

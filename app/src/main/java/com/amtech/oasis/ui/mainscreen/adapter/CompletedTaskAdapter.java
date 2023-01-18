@@ -54,6 +54,7 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
 
         CompletedTaskAdapter.ViewHolder holder = new CompletedTaskAdapter.ViewHolder(view);
 
+        holder.setIsRecyclable(false);
         return holder;
     }
 
@@ -70,16 +71,6 @@ public class CompletedTaskAdapter extends RecyclerView.Adapter<CompletedTaskAdap
                 holder.tvCompletedStartDate.setText(this.pendingTasksArrayList.get(position).getTaskDate());
                 holder.tvCompletedEndDate.setText(this.pendingTasksArrayList.get(position).getTaskEndDate());
 
-                /*for(int j =0;j<this.pendingTasksArrayList.get(position).getCheckLists().size();j++)
-                {
-                    AppCompatTextView txtName = new AppCompatTextView(context);
-//                txtName.setId("28");
-                    txtName.setEllipsize(TextUtils.TruncateAt.END);
-                    txtName.setMaxLines(2);
-                    txtName.setTextSize(12);
-                    txtName.setText(this.pendingTasksArrayList.get(position).getCheckLists().get(j).getCheckListName());
-                    holder.layoutCompletedCheckList.addView(txtName);
-                }*/
 
                 for(int j =0;j<this.pendingTasksArrayList.get(position).getCheckLists().size();j++)
                 {
